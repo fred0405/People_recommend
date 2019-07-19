@@ -18,9 +18,9 @@ youtubers = ['subtitles/A_Di_English.txt', 'subtitles/CYFIT.txt', 'subtitles/Dod
 # with open('text/CYFIT.txt', 'r') as input:
 for youtuber in youtubers:
 	data = dict()
-	with open(youtuber) as input:
+	with open(youtuber) as input1:
 		item_now = ''
-		for i, item in enumerate(input):
+		for i, item in enumerate(input1):
 			if re.match(r'(.*?).wav', item):
 				#print(item)
 				item_now = item.strip()
@@ -45,7 +45,7 @@ for youtuber in youtubers:
 					continue
 				doc = doc + word + ' '
 			#print(doc)
-			out.write(doc, )
+			out.write(doc)
 
 	print(len(data))
 
