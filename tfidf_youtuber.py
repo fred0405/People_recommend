@@ -25,9 +25,9 @@ vectorizer = TfidfVectorizer(ngram_range = (1,2), sublinear_tf = True)
 
 test_list = []
 
-files = listdir("./documents_movie")
+files = listdir("./documents_youtubers")
 for file in files:
-	path = "./documents_movie/" + file
+	path = "./documents_youtubers/" + file
 	
 	with open(path, 'r', encoding='utf8') as f:
 		for stuff in f :
@@ -91,8 +91,8 @@ for i, document in enumerate(document_tfidf_list):
         else:
             continue
 
-    f = files[i].split('.wav')
-    tfidf_c[f[0].split('-')[0]] = Cosine_Similarity(q, d)
+    f = files[i].split('.txt')
+    tfidf_c[f[0]] = Cosine_Similarity(q, d)
 tfidf_c = sorted(tfidf_c.items(), key=lambda x: x[1], reverse=True)
 
 for file, score in tfidf_c[:5]:
