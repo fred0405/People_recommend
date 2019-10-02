@@ -4,3 +4,4 @@ kkboxdemo-online/public/*.csv
 kkboxdemo-online/env.js
 sessions
 elasticsearch-7.3.1/* 
+*.pyc
