@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Embedding Mixed Queries</title>
 	{% include './layout/include_header.ejs' %}
-    <link rel='stylesheet' href='./stylesheets/style.css' />
+    <link rel='stylesheet' href={% static 'css/web/style.css' %} />
   </head>
   <body>
     <div class="loader"></div>
     <div class="header-search-bar container-fluid">
       <div class="container header-search-content">
-        <h5 class="demo-title"><img class="demo-logo" src="./images/logo.svg"/>Embedding Mixed Queries</h5>
+        <h5 class="demo-title"><img class="demo-logo" src={% static "images/logo.svg" %}/>Embedding Mixed Queries</h5>
         <div class="keyword-input-selector" style="display: none;">
           <select class="keyword-operator">
             <option value="plus">+</option>
@@ -389,7 +390,7 @@
               //console.log(new_arr[i].song_id);
               //console.log(i);
               //console.log(new_arr.length);
-            $('.list-container').append('<div class="list-item '+String(new_arr[i].id)+'-item checked new-add" playid="'+new_arr[i].play_id+'" songid="'+new_arr[i].song_id+'" index="'+i+'" style="margin-top: '+String((new_arr.length+1)*105)+'px;opacity: 0;"><table class="song-table"><tr><td class="rank-num" style="display: none;"><div>'+new_arr[i].rank+'</div></td><td class="song-img" style="padding-left: 15px;padding-right: 15px;"><img src="'+new_arr[i].img+'"></img></td><td class="song-info"><div>'+new_arr[i].name+'</div><div>'+new_arr[i].artist+' . '+new_arr[i].year+' . '+new_arr[i].album+'</div></td><td class="rank-change"><img src="/images/rating-new.svg"></img></td><td class="song-rank"><p>New</p></td><td class="song-play"><img src="./images/play.svg"></img></td></tr></table></div>');
+            $('.list-container').append('<div class="list-item '+String(new_arr[i].id)+'-item checked new-add" playid="'+new_arr[i].play_id+'" songid="'+new_arr[i].song_id+'" index="'+i+'" style="margin-top: '+String((new_arr.length+1)*105)+'px;opacity: 0;"><table class="song-table"><tr><td class="rank-num" style="display: none;"><div>'+new_arr[i].rank+'</div></td><td class="song-img" style="padding-left: 15px;padding-right: 15px;"><img src="'+new_arr[i].img+'"></img></td><td class="song-info"><div>'+new_arr[i].name+'</div><div>'+new_arr[i].artist+' . '+new_arr[i].year+' . '+new_arr[i].album+'</div></td><td class="rank-change"><img src={% static "images/rating-new.svg" %}></img></td><td class="song-rank"><p>New</p></td><td class="song-play"><img src={% static "images/play.svg" %}></img></td></tr></table></div>');
         }else if($('.'+String(new_arr[i].id)+'-item').attr('index')<i){
             const diff = i - $('.'+String(new_arr[i].id)+'-item').attr('index');
             $('.'+String(new_arr[i].id)+'-item').addClass('godown');
