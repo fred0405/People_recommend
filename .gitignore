@@ -5,3 +5,4 @@ kkboxdemo-online/env.js
 sessions
 elasticsearch-7.3.1/* 
 *.pyc
+kkboxdemo-online/*
