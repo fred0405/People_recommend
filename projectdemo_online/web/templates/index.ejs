@@ -66,8 +66,10 @@
   <script>
   $(document).ready(function(){
       $('.calcOperator').on('click',function(){
-        $.post('/rshow/', {keyword: $('#keyword').val()}, (rtn) => {
-          console.log(rtn);
+        $.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
+          $.each(JSON.parse(rtn.result), (idx, val) => {
+            $('.list-container').append('<iframe width="560" height="315" src="https://www.youtube.com/embed/'+ idx +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+          });
         })
       });
   });
