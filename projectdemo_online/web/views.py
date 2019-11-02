@@ -57,6 +57,8 @@ def get_result(query_str):
 	    query = QueryParser("content", ix.schema).parse(query_str)
 	    #query = MultifieldParser( ["content" ] , ix.schema).parse(query_str)
 	    results = searcher.search(query,limit=topN)
+
+	    # for i in range(topN):
 	    for i in range(topN):
 	    	result_dict[results[i]['movie_id']] = {"title": results[i]['title'], "score": str(results[i].score)}
 	        # print("title : " + results[i]['title'] + "\n" + "ID : " + results[i]['movie_id'] + "\n" + str(results[i].score))

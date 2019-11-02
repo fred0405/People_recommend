@@ -529,3 +529,19 @@ display: inline-block;
   height: 35px;
   margin-right: 10px;
 }
+
+.movie_container{
+  padding:30px;
+  position:relative;
+  overflow: auto;
+  display:block;
+  height:400px;
+}
+.movie_list{
+  padding:30px;
+  width:56.6%;
+}
+.movie_list tbody{
+  display:block;
+  overflow:auto;
+}
