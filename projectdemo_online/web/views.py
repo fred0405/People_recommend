@@ -7,7 +7,8 @@ from whoosh.index import create_in
 from whoosh.fields import *
 from whoosh.qparser import QueryParser
 from whoosh.qparser import MultifieldParser
-from whoosh import scoring
+from whoosh import scoring, index
+from whoosh.index import open_dir
 import json
 # Create your views here.
 
@@ -24,7 +25,8 @@ def rshow(request):
 def search(request):
 	query = request.POST.get('keyword')
 	print(query)
-	rtn_dict = get_result(query)
+	# rtn_dict = get_result(query)
+	rtn_dict = get_result_new(query)
 	return JsonResponse({"status": True, "result": json.dumps(rtn_dict)})
 
 def get_result(query_str):
@@ -64,3 +66,19 @@ def get_result(query_str):
 	        # print("title : " + results[i]['title'] + "\n" + "ID : " + results[i]['movie_id'] + "\n" + str(results[i].score))
 	print(result_dict)
 	return result_dict
+
+def get_result_new(query_str):
+	file_path = os.path.abspath("web/static/whoosh/")
+	ix = index.open_dir(file_path+"indexdir")
+	with ix.searcher(weighting=scoring.BM25F) as searcher:
+	    query = QueryParser("content", ix.schema).parse(query_str)
+	    #query = MultifieldParser( ["content" ] , ix.schema).parse(query_str)
+	    results = searcher.search(query,limit=topN)
+
+	    # for i in range(topN):
+	    for i in range(topN):
+	    	result_dict[results[i]['movie_id']] = {"title": results[i]['title'], "score": str(results[i].score)}
+	        # print("title : " + results[i]['title'] + "\n" + "ID : " + results[i]['movie_id'] + "\n" + str(results[i].score))
+	print(result_dict)
+	return result_dict
+
