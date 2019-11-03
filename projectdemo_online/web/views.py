@@ -7,7 +7,7 @@ from whoosh.index import create_in
 from whoosh.fields import *
 from whoosh.qparser import QueryParser
 from whoosh.qparser import MultifieldParser
-from whoosh import scoring, index
+from whoosh import scoring
 from whoosh.index import open_dir
 import json
 # Create your views here.
@@ -68,8 +68,11 @@ def get_result(query_str):
 	return result_dict
 
 def get_result_new(query_str):
-	file_path = os.path.abspath("web/static/whoosh/")
-	ix = index.open_dir(file_path+"indexdir")
+	file_path = os.path.abspath("web/static/whoosh/indexdir")
+	result_dict = {}
+	# print(index.exists_in(file_path))
+	ix = open_dir(file_path)
+	topN = 10
 	with ix.searcher(weighting=scoring.BM25F) as searcher:
 	    query = QueryParser("content", ix.schema).parse(query_str)
 	    #query = MultifieldParser( ["content" ] , ix.schema).parse(query_str)
