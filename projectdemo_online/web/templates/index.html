@@ -49,7 +49,7 @@
 
   <div class="container">
     <div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
-      <div class="list-container" style="height: 500px; display: none;">
+      <div class="list-container" style="display: none;">
 	      <div class="movie_container">
 		      <table class="movie_list">
 			      <thead>
@@ -249,17 +249,17 @@
 				$('#intro').slideUp('slow');
 				$('.list-container').slideDown('slow');
 				$('.row.center').animate({width: '50%'});
-				$('.list-container').css('background-image', "url('static/images/loading-list.svg')", 'z-index: 1000000');
+				//$('.list-container').css('background-image', "url('static/images/loading-list.svg')", 'z-index: 1000000');
 				
-				var myVar = setInterval(function(){
-					$('list-container').fadeOut(800).fadeIn(1000);
-				}, 2000);
+				//var myVar = setInterval(function(){
+				//	$('list-container').fadeOut(800).fadeIn(1000);
+				//}, 2000);
 
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					$.each(JSON.parse(rtn.result), (idx, val) => {
 						$('.movie_list').append('<tr><td><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ idx +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
-						clearInterval(myVar);
-						$('list-container').fadeOut(500);
+						//clearInterval(myVar);
+						//$('list-container').fadeOut(500);
 					});
 				});
 			});
