@@ -14,6 +14,49 @@
   <link href={% static "css/style.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+  <div class="loader" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background-color: white; opacity: 0.5; text-align: center; z-index: 2; display: none;">
+    <div class="preloader-wrapper big active" style="z-index: 3">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
 	    <a id="logo-container" href="#" class="brand-logo"><img src={% static "images/youtubeicon.png" %} style="width: 60px;"/></a>
@@ -244,17 +287,26 @@
   </body>
 
 	<script>
+		// mouse touch
+		$('.calcOperator').hover(function(){
+			$(this).stop().animate({'opacity': 0.5});
+		}, function(){
+			$(this).stop().animate({'opacity': 1});
+		});
+
 		$(document).ready(function(){
 			$('.calcOperator').on('click', function(){
-				$('#intro').slideUp('slow');
-				$('.list-container').slideDown('slow');
+				//$('.loader').height($('.loader').height());
+				//$('.list-container').height($('.loader').height());
+				$('.list-container').height('1000px');
 				$('.row.center').animate({width: '50%'});
-				//$('.list-container').css('background-image', "url('static/images/loading-list.svg')", 'z-index: 1000000');
-				
-				//var myVar = setInterval(function(){
-				//	$('list-container').fadeOut(800).fadeIn(1000);
-				//}, 2000);
-
+				$('.loader').fadeIn(500);
+				//$('.loader').css('background-image', 'url({% static "images/loading-list.svg" %})', 'z-index: 1000000');
+				/*
+				var myVar = setInterval(function(){
+					$('.loader').fadeOut(800).fadeIn(1000);
+				}, 2000);
+				*/
 				/*
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					var count = 0;
@@ -268,8 +320,9 @@
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					$.each(JSON.parse(rtn.result), (idx, val) => {
 						$('.movie_list').append('<tr><td><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ idx +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
+						$('.list-container').slideDown('slow');
 						//clearInterval(myVar);
-						//$('list-container').fadeOut(500);
+						$('.loader').fadeOut(500);
 					});
 				});
 			});
