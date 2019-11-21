@@ -14,8 +14,9 @@
   <link href={% static "css/style.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-  <div class="loader" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background-color: white; opacity: 0.5; text-align: center; z-index: 2; display: none;">
-    <div class="preloader-wrapper big active" style="z-index: 3">
+  <div class="loader-background"></div>
+  <div class="loader">
+    <div class="preloader-wrapper big active">
       <div class="spinner-layer spinner-blue">
         <div class="circle-clipper left">
           <div class="circle"></div>
@@ -296,12 +297,10 @@
 
 		$(document).ready(function(){
 			$('.calcOperator').on('click', function(){
-				//$('.loader').height($('.loader').height());
-				//$('.list-container').height($('.loader').height());
-				$('.list-container').height('1000px');
+				//$('.list-container').height('1000px');
 				$('.row.center').animate({width: '50%'});
-				$('.loader').fadeIn(500);
-				//$('.loader').css('background-image', 'url({% static "images/loading-list.svg" %})', 'z-index: 1000000');
+				$('.loader').fadeIn(100);
+				$('.loader-background').fadeIn(100);
 				/*
 				var myVar = setInterval(function(){
 					$('.loader').fadeOut(800).fadeIn(1000);
@@ -322,7 +321,7 @@
 						$('.movie_list').append('<tr><td><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ idx +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
 						$('.list-container').slideDown('slow');
 						//clearInterval(myVar);
-						$('.loader').fadeOut(500);
+						$('.loader').fadeOut(100);
 					});
 				});
 			});
