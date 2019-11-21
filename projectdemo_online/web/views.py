@@ -15,7 +15,8 @@ import json
 def index(request):
 	context = {}
 	context['hello'] = 'Hello World!' 
-	return render(request, 'index.ejs', context)
+	#return render(request, 'index.ejs', context)
+	return render(request, 'index.html', context)
 @csrf_exempt
 def rshow(request):
 	print(request.POST['keyword'])
