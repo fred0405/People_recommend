@@ -90,7 +90,8 @@ def get_result_new(query_str):
 	        # print("title : " + results[i]['title'] + "\n" + "ID : " + results[i]['movie_id'] + "\n" + str(results[i].score))
 	# 'q3Fe6_KGxb0': {'title': "《漫威蜘蛛俠 Marvel's Spider-Man》的能力和責任——遊戲鑒賞【就知道玩遊戲34】", 'youtuber': 'Gamker', 'score': '1.9486520101094948'}
 	#rerank(result_dict)
-        rlt = rerank(result_dict)
+        rlt = {}
+        rlt.update(rerank(result_dict))
 	# print(result_dict)
 	# print(tt)
 	print(result_dict)
