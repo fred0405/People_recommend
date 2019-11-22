@@ -309,11 +309,11 @@
 							return (index < 9);
 						});
 					});
+					
+					$('.list-container').slideDown('slow');
+					$('.loader').fadeOut(100);
+					$('.loader-background').fadeOut(100);
 				});
-
-				$('.list-container').slideDown('slow');
-				$('.loader').fadeOut(100);
-				$('.loader-background').fadeOut(100);
 				
 				/*
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
