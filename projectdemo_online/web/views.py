@@ -28,7 +28,6 @@ def search(request):
 	print(query)
 	# rtn_dict = get_result(query)
 	rtn_dict = get_result_new(query)
-        #print(rtn_dict)
 	return JsonResponse({"status": True, "result": json.dumps(rtn_dict)})
 
 def get_result(query_str):
@@ -90,11 +89,13 @@ def get_result_new(query_str):
 	    	result_dict[results[i]['movie_id']] = {"title": results[i]['title'], "youtuber":results[i]['youtuber'], "score": str(results[i].score)}
 	        # print("title : " + results[i]['title'] + "\n" + "ID : " + results[i]['movie_id'] + "\n" + str(results[i].score))
 	# 'q3Fe6_KGxb0': {'title': "《漫威蜘蛛俠 Marvel's Spider-Man》的能力和責任——遊戲鑒賞【就知道玩遊戲34】", 'youtuber': 'Gamker', 'score': '1.9486520101094948'}
-	rerank(result_dict)
+	#rerank(result_dict)
+        rlt = rerank(result_dict)
 	# print(result_dict)
 	# print(tt)
 	print(result_dict)
-	return result_dict
+	#return result_dict
+        return rlt
 
 def rerank(data):
 	youtuber_rank = dict()
