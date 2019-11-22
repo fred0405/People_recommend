@@ -298,30 +298,34 @@
 				$('.row.center').animate({width: '50%'});
 				$('.loader').fadeIn(100);
 				$('.loader-background').fadeIn(100);
-				/*
-				var myVar = setInterval(function(){
-					$('.loader').fadeOut(800).fadeIn(1000);
-				}, 2000);
-				*/
-				/*
+				
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					var count = 0;
 					$.each(JSON.parse(rtn.result), (idx, val) => {
 						count = count + 1;
-						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '></p><div class="videos"><table class="video-list"><thead></thead><tbody></tbody></table></div></div>');
+						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '>' + idx + '</p><div class="videos"><table class="video-list"><thead></thead><tbody></tbody></table></div></div>');
+						$.each(Object.values(val).map(item => item.movie_id), function(index, movie){
+							$('.video-list').append('<tr><td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
+							return (index < 9);
+						});
 					});
 				});
-				*/
 
+				$('.list-container').slideDown('slow');
+				$('.loader').fadeOut(100);
+				$('.loader-background').fadeOut(100);
+				
+				/*
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					$.each(JSON.parse(rtn.result), (idx, val) => {
 						$('.movie_list').append('<tr><td><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ idx +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
+
 						$('.list-container').slideDown('slow');
-						//clearInterval(myVar);
 						$('.loader').fadeOut(100);
 						$('.loader-background').fadeOut(100);
 					});
 				});
+				*/
 			});
 		});
 
