@@ -301,12 +301,14 @@
 				
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					var count = 0;
-					$.each(JSON.parse(rtn.result), (idx, val) => { count = count + 1;
-						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '>' + idx + '</p><div class="videos"><table class="video-list"><thead></thead><tbody></tbody></table></div></div>');
+					$.each(JSON.parse(rtn.result), function(idx, val){
+						count = count + 1;
+						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody></tbody></table></div></div>');
 						$.each(Object.values(val).map(item => item.movie_id), function(index, movie){
-							$('.video-list').append('<tr><td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
-							return (index < 9);
+							$('.video-list.youtuber' + count).append('<tr><td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
+							return (index < 10);
 						});
+						return (count < 5);
 					});
 					
 					$('.list-container').slideDown('slow');
