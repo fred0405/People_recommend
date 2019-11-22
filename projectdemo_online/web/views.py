@@ -28,6 +28,7 @@ def search(request):
 	print(query)
 	# rtn_dict = get_result(query)
 	rtn_dict = get_result_new(query)
+        print(rtn_dict)
 	return JsonResponse({"status": True, "result": json.dumps(rtn_dict)})
 
 def get_result(query_str):
@@ -92,7 +93,7 @@ def get_result_new(query_str):
 	rerank(result_dict)
 	# print(result_dict)
 	# print(tt)
-	print(result_dict)
+	#print(result_dict)
 	return result_dict
 
 def rerank(data):
