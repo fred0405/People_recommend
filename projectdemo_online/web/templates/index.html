@@ -91,14 +91,14 @@
 
   <div class="container">
     <div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
-      <div class="list-container" style="display: none;">
-	<!--div class="youtuber-list">
+      <div class="list-container" style="/*display: none;*/">
+	<div class="youtuber-list">
         <p class="youtuber youtuber1">
 	  YOUTUBER_1
 	  # of video: ########
 	</p>
 	<div class="videos">
-	  <table class="video-list">
+	  <table class="video-list youtuber1">
 	    <tr>
 	      <td class="youtuber1 video">
 		VIDEO_1
@@ -125,7 +125,7 @@
 	  # of video: ########
 	</p>
 	<div class="videos">
-	  <table class="video-list">
+	  <table class="video-list youtuber2">
 	    <tr>
 	      <td class="youtuber2 video">
 		VIDEO_1
@@ -152,7 +152,7 @@
 	  # of video: ########
 	</p>
 	<div class="videos">
-	  <table class="video-list">
+	  <table class="video-list youtuber3">
 	    <tr>
 	      <td class="youtuber3 video">
 		VIDEO_1
@@ -179,7 +179,7 @@
 	  # of video: ########
 	</p>
 	<div class="videos">
-	  <table class="video-list">
+	  <table class="video-list youtuber4">
 	    <tr>
 	      <td class="youtuber4 video">
 		VIDEO_1
@@ -206,7 +206,7 @@
 	  # of video: ########
 	</p>
 	<div class="videos">
-	  <table class="video-list">
+	  <table class="video-list youtuber5">
 	    <tr>
 	      <td class="youtuber5 video">
 		VIDEO_1
@@ -226,7 +226,7 @@
 	    </tr>
 	  </table>
 	</div>
-	</div-->
+	</div>
       </div>
     </div>
   </div>
@@ -294,7 +294,7 @@
 					var count = 0;
 					$.each(JSON.parse(rtn.result), function(idx, val){
 						count = count + 1;
-						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list"><thead></thead><tbody></tbody></table></div></div>');
+						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody></tbody></table></div></div>');
 						$.each(Object.values(val).map(item => item.movie_id), function(index, movie){
 							$('.video-list.youtuber' + count).append('<tr><td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>');
 							return (index < 10);
