@@ -88,10 +88,12 @@ def get_result_new(query_str):
 	    	result_dict[results[i]['movie_id']] = {"title": results[i]['title'], "youtuber":results[i]['youtuber'], "score": str(results[i].score)}
 	        # print("title : " + results[i]['title'] + "\n" + "ID : " + results[i]['movie_id'] + "\n" + str(results[i].score))
 	# 'q3Fe6_KGxb0': {'title': "《漫威蜘蛛俠 Marvel's Spider-Man》的能力和責任——遊戲鑒賞【就知道玩遊戲34】", 'youtuber': 'Gamker', 'score': '1.9486520101094948'}
-	rerank(result_dict)
+	result_dict = rerank(result_dict)
 	# print(result_dict)
 	# print(tt)
+
 	print(result_dict)
+	
 	return result_dict
 
 def rerank(data):
@@ -104,10 +106,10 @@ def rerank(data):
 			youtuber_rank[data[id]['youtuber']] += 1
 	
 	youtuber_rank = sorted(youtuber_rank.items(), key=lambda d: d[1], reverse=True)
-	print(youtuber_rank)
+	# print(youtuber_rank)
 	for yt in youtuber_rank:
 		result[yt[0]] = []
 	for movie_id in data:
 		result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
-	print(result)
+	# print(result)
 	return result
