@@ -92,6 +92,141 @@
   <div class="container">
     <div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
       <div class="list-container" style="display: none;">
+	<!--div class="youtuber-list">
+        <p class="youtuber youtuber1">
+	  YOUTUBER_1
+	  # of video: ########
+	</p>
+	<div class="videos">
+	  <table class="video-list youtuber1">
+	    <tr>
+	      <td class="youtuber1 video">
+		VIDEO_1
+	      </td>
+	      <td class="youtuber1 video">
+		VIDEO_2
+	      </td>
+	      <td class="youtuber1 video">
+		VIDEO_3
+	      </td>
+	      <td class="youtuber1 video">
+		VIDEO_4
+	      </td>
+	      <td class="youtuber1 video">
+		VIDEO_5
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	</div>
+	<div class="youtuber-list">
+        <p class="youtuber youtuber2">
+	  YOUTUBER_2
+	  # of video: ########
+	</p>
+	<div class="videos">
+	  <table class="video-list youtuber2">
+	    <tr>
+	      <td class="youtuber2 video">
+		VIDEO_1
+	      </td>
+	      <td class="youtuber2 video">
+		VIDEO_2
+	      </td>
+	      <td class="youtuber2 video">
+		VIDEO_3
+	      </td>
+	      <td class="youtuber2 video">
+		VIDEO_4
+	      </td>
+	      <td class="youtuber2 video">
+		VIDEO_5
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	</div>
+	<div class="youtuber-list">
+        <p class="youtuber youtuber3">
+	  YOUTUBER_3
+	  # of video: ########
+	</p>
+	<div class="videos">
+	  <table class="video-list youtuber3">
+	    <tr>
+	      <td class="youtuber3 video">
+		VIDEO_1
+	      </td>
+	      <td class="youtuber3 video">
+		VIDEO_2
+	      </td>
+	      <td class="youtuber3 video">
+		VIDEO_3
+	      </td>
+	      <td class="youtuber3 video">
+		VIDEO_4
+	      </td>
+	      <td class="youtuber3 video">
+		VIDEO_5
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	</div>
+	<div class="youtuber-list">
+        <p class="youtuber youtuber4">
+	  YOUTUBER_4
+	  # of video: ########
+	</p>
+	<div class="videos">
+	  <table class="video-list youtuber4">
+	    <tr>
+	      <td class="youtuber4 video">
+		VIDEO_1
+	      </td>
+	      <td class="youtuber4 video">
+		VIDEO_2
+	      </td>
+	      <td class="youtuber4 video">
+		VIDEO_3
+	      </td>
+	      <td class="youtuber4 video">
+		VIDEO_4
+	      </td>
+	      <td class="youtuber4 video">
+		VIDEO_5
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	</div>
+	<div class="youtuber-list">
+        <p class="youtuber youtuber5">
+	  YOUTUBER_5
+	  # of video: ########
+	</p>
+	<div class="videos">
+	  <table class="video-list youtuber5">
+	    <tr>
+	      <td class="youtuber5 video">
+		VIDEO_1
+	      </td>
+	      <td class="youtuber5 video">
+		VIDEO_2
+	      </td>
+	      <td class="youtuber5 video">
+		VIDEO_3
+	      </td>
+	      <td class="youtuber5 video">
+		VIDEO_4
+	      </td>
+	      <td class="youtuber5 video">
+		VIDEO_5
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+	</div-->
       </div>
     </div>
   </div>
@@ -150,16 +285,18 @@
 		});
 
 		$(document).ready(function(){
-			$('.calcOperator').on('click', function(){
+			$('.calcOperator').click(function(){
 				$('.row.center').animate({width: '50%'});
-				$('.loader').fadeIn(100);
-				$('.loader-background').fadeIn(100);
+				$('.list-container').slideUp('slow');
+				//$('.list-container').empty();
+				$('.loader').fadeIn(500);
+				$('.loader-background').fadeIn(500);
 				
 				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
 					var count = 0;
 					$.each(JSON.parse(rtn.result), function(idx, val){
 						count = count + 1;
-						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody><tr></tr></tbody></table></div></div>');
+						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">\n' + idx + '\n</p>\n<div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody><tr></tr></tbody></table></div></div>');
 						$.each(Object.values(val).map(item => item.movie_id), function(index, movie){
 							$('.video-list.youtuber' + count + ' tr').append('<td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>');
 							return (index < 9);
@@ -168,42 +305,42 @@
 					});
 					
 					$('.list-container').slideDown('slow');
-					$('.loader').fadeOut(100);
-					$('.loader-background').fadeOut(100);
+					$('.loader').fadeOut(500);
+					$('.loader-background').fadeOut(500);
 				});
 			});
 		});
 
-		$(function(){
-			$('.youtuber1').on('click', function(){
+		$(document).ready(function(){
+			$('.youtuber1').click(function(){
 				$('.youtuber1.video').slideToggle('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideUp('slow');
 				$('.youtuber4.video').slideUp('slow');
 				$('.youtuber5.video').slideUp('slow');
 			});
-			$('.youtuber2').on('click', function(){
+			$('.youtuber2').click(function(){
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideToggle('slow');
 				$('.youtuber3.video').slideUp('slow');
 				$('.youtuber4.video').slideUp('slow');
 				$('.youtuber5.video').slideUp('slow');
 			});
-			$('.youtuber3').on('click', function(){
+			$('.youtuber3').click(function(){
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideToggle('slow');
 				$('.youtuber4.video').slideUp('slow');
 				$('.youtuber5.video').slideUp('slow');
 			});
-			$('.youtuber4').on('click', function(){
+			$('.youtuber4').click(function(){
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideUp('slow');
 				$('.youtuber4.video').slideToggle('slow');
 				$('.youtuber5.video').slideUp('slow');
 			});
-			$('.youtuber5').on('click', function(){
+			$('.youtuber5').click(function(){
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideUp('slow');
