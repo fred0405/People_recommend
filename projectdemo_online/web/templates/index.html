@@ -56,19 +56,6 @@
       </div>
     </div>
   </div>
-  <!--nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-	    <a id="logo-container" href="#" class="brand-logo"><img src={% static "images/youtubeicon.png" %} style="width: 60px;"/></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav-->
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
@@ -91,14 +78,16 @@
 
   <div class="container">
     <div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
-      <div class="list-container" style="display: none;">
-	<!--div class="youtuber-list">
+      <div class="list-container" style="/*display: none;*/">
+	<div class="youtuber-list">
         <p class="youtuber youtuber1">
 	  YOUTUBER_1
 	  # of video: ########
 	</p>
 	<div class="videos">
 	  <table class="video-list youtuber1">
+	    <thead></thead>
+	    <tbody>
 	    <tr>
 	      <td class="youtuber1 video">
 		VIDEO_1
@@ -116,10 +105,11 @@
 		VIDEO_5
 	      </td>
 	    </tr>
+	    </tbody>
 	  </table>
 	</div>
 	</div>
-	<div class="youtuber-list">
+	<!--div class="youtuber-list">
         <p class="youtuber youtuber2">
 	  YOUTUBER_2
 	  # of video: ########
@@ -296,7 +286,7 @@
 					var count = 0;
 					$.each(JSON.parse(rtn.result), function(idx, val){
 						count = count + 1;
-						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">\n' + idx + '\n</p>\n<div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody><tr></tr></tbody></table></div></div>');
+						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody><tr></tr></tbody></table></div></div>');
 						$.each(Object.values(val).map(item => item.movie_id), function(index, movie){
 							$('.video-list.youtuber' + count + ' tr').append('<td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>');
 							return (index < 9);
@@ -313,6 +303,7 @@
 
 		$(document).ready(function(){
 			$('.youtuber1').click(function(){
+				window.alert('Click1!!');
 				$('.youtuber1.video').slideToggle('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideUp('slow');
@@ -320,6 +311,7 @@
 				$('.youtuber5.video').slideUp('slow');
 			});
 			$('.youtuber2').click(function(){
+				window.alert('Click2!!');
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideToggle('slow');
 				$('.youtuber3.video').slideUp('slow');
@@ -327,6 +319,7 @@
 				$('.youtuber5.video').slideUp('slow');
 			});
 			$('.youtuber3').click(function(){
+				window.alert('Click3!!');
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideToggle('slow');
@@ -334,6 +327,7 @@
 				$('.youtuber5.video').slideUp('slow');
 			});
 			$('.youtuber4').click(function(){
+				window.alert('Click4!!');
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideUp('slow');
@@ -341,6 +335,7 @@
 				$('.youtuber5.video').slideUp('slow');
 			});
 			$('.youtuber5').click(function(){
+				window.alert('Click5!!');
 				$('.youtuber1.video').slideUp('slow');
 				$('.youtuber2.video').slideUp('slow');
 				$('.youtuber3.video').slideUp('slow');
