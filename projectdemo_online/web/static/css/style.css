@@ -113,7 +113,7 @@ footer.page-footer {
 	padding-left: 10px;
 	padding-right: 10px;
 	text-align: center;
-	/*display: none;*/
+	display: none;
 }
 .video-list .video:nth-child(2n){
 	background: gray;
