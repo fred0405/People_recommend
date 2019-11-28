@@ -157,7 +157,7 @@
 						count = count + 1;
 						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody><tr></tr></tbody></table></div></div>');
 						$.each(Object.values(val).map(item => item.movie_id), function(index, movie){
-							$('.video-list.youtuber' + count + ' tr').append('<td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+ movie +'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>');
+							$('.video-list.youtuber' + count + ' tr').append('<td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/' + movie + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>');
 							return (index < 9);
 						});
 						return (count < 5);
