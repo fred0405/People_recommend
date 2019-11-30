@@ -12,13 +12,11 @@ from whoosh.index import open_dir
 import json
 # Create your views here.
 
-
-
 def index(request):
 	context = {}
 	context['hello'] = 'Hello World!' 
-	return render(request, 'index1.html', context)
-	#return render(request, 'index.html', context)
+	#return render(request, 'index.ejs', context)
+	return render(request, 'index.html', context)
 @csrf_exempt
 def rshow(request):
 	print(request.POST['keyword'])
@@ -100,15 +98,8 @@ def get_result_new(query_str):
 	return result_dict
 
 def rerank(data):
-	file_index_path =  os.path.abspath("web/")
-	file = open(file_index_path + '/yt_js.txt', 'r') 
-	js = file.read()
-	yt_crawler = json.loads(js)
-	file.close()
-
 	youtuber_rank = dict()
 	result = dict()
-	ytresult = dict()
 	for id in data:
 		if data[id]['youtuber'] not in youtuber_rank.keys():
 			youtuber_rank[data[id]['youtuber']] = 1
@@ -116,29 +107,10 @@ def rerank(data):
 			youtuber_rank[data[id]['youtuber']] += 1
 	
 	youtuber_rank = sorted(youtuber_rank.items(), key=lambda d: d[1], reverse=True)
-	#print(youtuber_rank)
+	# print(youtuber_rank)
 	for yt in youtuber_rank:
-		result[yt[0]] = {}
+		result[yt[0]] = []
 	for movie_id in data:
-		#result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
-                #result[data[movie_id]['youtuber']].append({'movie': [{'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']}]})
-                if 'movie' not in result[data[movie_id]['youtuber']].keys():
-                    l = []
-                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
-                    result[data[movie_id]['youtuber']]['movie'] = l
-                else:
-                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']});
-                #result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
-	for key in result.keys():
- 		if key in yt_crawler:
- #			result.update(yt_crawler)
- #			result[key] = yt_crawler[key]
- #			result[key] =  result[key], yt_crawler[key]
- #			result[key].append({'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]})
-                        #result[key].append({'info': [{'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}]})
-                        #result[key].append({'info': {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}})
-                        result[key]['info'] = {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
- #			print(result) 
-	print(result)
+		result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
+	# print(result)
 	return result
-

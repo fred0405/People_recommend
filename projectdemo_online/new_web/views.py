@@ -17,8 +17,8 @@ import json
 def index(request):
 	context = {}
 	context['hello'] = 'Hello World!' 
-	return render(request, 'index1.html', context)
-	#return render(request, 'index.html', context)
+	#return render(request, 'index.ejs', context)
+	return render(request, 'index.html', context)
 @csrf_exempt
 def rshow(request):
 	print(request.POST['keyword'])
@@ -118,26 +118,15 @@ def rerank(data):
 	youtuber_rank = sorted(youtuber_rank.items(), key=lambda d: d[1], reverse=True)
 	#print(youtuber_rank)
 	for yt in youtuber_rank:
-		result[yt[0]] = {}
+		result[yt[0]] = []
 	for movie_id in data:
-		#result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
-                #result[data[movie_id]['youtuber']].append({'movie': [{'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']}]})
-                if 'movie' not in result[data[movie_id]['youtuber']].keys():
-                    l = []
-                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
-                    result[data[movie_id]['youtuber']]['movie'] = l
-                else:
-                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']});
-                #result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
+		result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
 	for key in result.keys():
  		if key in yt_crawler:
  #			result.update(yt_crawler)
  #			result[key] = yt_crawler[key]
- #			result[key] =  result[key], yt_crawler[key]
+ 			result[key] =  result[key], yt_crawler[key]
  #			result[key].append({'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]})
-                        #result[key].append({'info': [{'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}]})
-                        #result[key].append({'info': {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}})
-                        result[key]['info'] = {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
  #			print(result) 
 	print(result)
 	return result
