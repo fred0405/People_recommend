@@ -9,7 +9,6 @@ f = open('yt.txt',"r")
 lines = f.readlines()
 
 
-
 song_url_list = lines
 
 f.close()
@@ -32,28 +31,14 @@ for i in range(len(song_url_list)):
     img = root.find("img")
     imgs = img['src']
 
-    key = name.get_text('#').split('#')[0]
+    key = name.get_text('#').split('#')[0].replace(" ", "")
     
     if(description != None):
         value = [description.get_text('#').split('#')[1],subscriber.get_text('#') + (" 位訂閱者"),imgs]
     else:
         value = ["None",subscriber.get_text('#') + (" 位訂閱者"),imgs]
     
-    data[key] = value
-
-
-data['A_Di_English'] = data['阿滴英文']
-data['CYFIT'] = data['CYFIT兆佑']
-data['Dodo_Village'] = data['抖抖村']
-data['Empty_Bottle_King'] = data['空罐王']
-data['Gamker'] = data['Gamker攻壳官方频道']
-data['Little_Hot_Sing'] = data['小熱唱']
-data['Lulu'] = data['路路LULU']
-data['Table_Games_Taichung'] = data['逸馬的桌遊小教室']
-data['bq'] = data['特力屋']
-data['gayi'] = data['健人蓋伊']
-data['maomaotv'] = data['MaoMao TV']
-data['missga'] = data['嘎老師 Miss Ga']    
+    data[key] = value 
 
 js = json.dumps(data) 
 file = open('yt_js.txt', 'w') 
