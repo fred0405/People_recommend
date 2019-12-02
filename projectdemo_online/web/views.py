@@ -18,7 +18,7 @@ from ckiptagger import *
 
 file_path_ice = os.path.abspath("web/static/ice/newice.embd")
 embedding_dict = dict()
-with open(file_path_ice, 'r') as f_in:
+with open(file_path_ice, 'r', encoding='utf-8') as f_in:
 	for line in f_in.readlines():
 		line = line.strip().split()
 		embedding_dict[line[0]] = [float(w) for w in line[1:]]
@@ -144,6 +144,11 @@ def rerank(data):
 	return result
 
 def rerank_ice(data, query_str):
+	file_index_path =  os.path.abspath("web/")
+	file = open(file_index_path + '/yt_js.txt', 'r') 
+	js = file.read()
+	yt_crawler = json.loads(js)
+	file.close()
 	
 	youtuber_rank = dict()
 	result = dict()
