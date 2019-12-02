@@ -27,8 +27,8 @@ def index(request):
 	context['hello'] = 'Hello World!'
 	#return render(request, 'index.ejs', context)
 	#return render(request, 'index_origin.html', context)
-	return render(request, 'index_table.html', context)
-	#return render(request, 'index_target.html', context)
+	#return render(request, 'index_table.html', context)
+	return render(request, 'index_target.html', context)
 @csrf_exempt
 def rshow(request):
 	print(request.POST['keyword'])
