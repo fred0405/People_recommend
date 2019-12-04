@@ -235,49 +235,8 @@ $(document).keyup(function(event){
 			$('.white-background').fadeOut(500);
 	}
 });
-/*
-$(document).ready(function(){
-	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber1', function(){
-		$('.youtuber1.video').slideToggle('slow');
-//$('.youtuber1.video').css('display', 'inline');
-//$('.youtuber1 .btn').css('display', 'block');
-		$('.youtuber2.video').slideUp('slow');
-		$('.youtuber3.video').slideUp('slow');
-		$('.youtuber4.video').slideUp('slow');
-		$('.youtuber5.video').slideUp('slow');
-	});
-	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber2', function(){
-		$('.youtuber1.video').slideUp('slow');
-		$('.youtuber2.video').slideToggle('slow');
-		$('.youtuber3.video').slideUp('slow');
-		$('.youtuber4.video').slideUp('slow');
-		$('.youtuber5.video').slideUp('slow');
-	});
-	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber3', function(){
-		$('.youtuber1.video').slideUp('slow');
-		$('.youtuber2.video').slideUp('slow');
-		$('.youtuber3.video').slideToggle('slow');
-		$('.youtuber4.video').slideUp('slow');
-		$('.youtuber5.video').slideUp('slow');
-	});
-	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber4', function(){
-		$('.youtuber1.video').slideUp('slow');
-		$('.youtuber2.video').slideUp('slow');
-		$('.youtuber3.video').slideUp('slow');
-		$('.youtuber4.video').slideToggle('slow');
-		$('.youtuber5.video').slideUp('slow');
-	});
-	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber5', function(){
-		$('.youtuber1.video').slideUp('slow');
-		$('.youtuber2.video').slideUp('slow');
-		$('.youtuber3.video').slideUp('slow');
-		$('.youtuber4.video').slideUp('slow');
-		$('.youtuber5.video').slideToggle('slow');
-	});
-});
- */
-$(document).ready(function(){
-	var liW = $(".video1 li").width();
+//$(document).ready(function(){
+	var liW = $(".detail .YTer1 .videos1 .video1 li").width();
 	//var liW = $("li").width();
 	var len = $(".video1 li").length;
 	//var len = $('li').length;
@@ -305,6 +264,6 @@ $(document).ready(function(){
 		var move = -index * liW
 		$(".video1").stop().animate({"left":move},300)
 	}
-});
+//});
 	</script>
 </html>

@@ -25,9 +25,8 @@ with open(file_path_ice, 'r', encoding='utf-8') as f_in:
 def index(request):
 	context = {}
 	context['hello'] = 'Hello World!'
+        # Change the frontend web page file
 	#return render(request, 'index.ejs', context)
-	#return render(request, 'index_origin.html', context)
-	#return render(request, 'index_table.html', context)
 	return render(request, 'index_target.html', context)
 @csrf_exempt
 def rshow(request):
@@ -144,6 +143,7 @@ def rerank(data):
 	return result
 
 def rerank_ice(data, query_str):
+        # Youtuber information
 	file_index_path =  os.path.abspath("web/")
 	file = open(file_index_path + '/yt_js.txt', 'r') 
 	js = file.read()
@@ -162,9 +162,11 @@ def rerank_ice(data, query_str):
 	youtuber_rank = sorted(youtuber_rank.items(), key=lambda d: d[1], reverse=True)
 	print(youtuber_rank,)
 	for yt in youtuber_rank:
+                # Change the result from array to dictionary
 		#result[yt[0]] = []
 		result[yt[0]] = {}
 	for movie_id in data:
+                # Add youtube movie to result dictionary
 		#result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
                 if 'movie' not in result[data[movie_id]['youtuber']].keys():
                     l = []
@@ -173,6 +175,7 @@ def rerank_ice(data, query_str):
                 else:
                     result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']});
 	for key in result.keys():
+                # Add the youtuber information to result dictionary
  		if key in yt_crawler:
                         result[key]['info'] = {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
 	# print(result)
