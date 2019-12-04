@@ -228,6 +228,12 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 });
+$(document).ready(function(){
+	$('.white-background').on('click', function(){
+		$('.detail').fadeOut(500);
+		$('.white-background').fadeOut(500);
+	});
+});
 $(document).keyup(function(event){
 	switch(event.keyCode){
 		case 27:
