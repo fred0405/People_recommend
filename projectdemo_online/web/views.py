@@ -14,10 +14,16 @@ from numpy import dot
 from numpy.linalg import norm
 import json
 from ckiptagger import *
+from apiclient.discovery import build
+
 # Create your views here.
+
+api_key = 'AIzaSyCnUjEPyPAI-WVWGuS3Rdb_5-DDgUp_8u8'
+youtube = build('youtube', 'v3', developerKey=api_key)
 
 file_path_ice = os.path.abspath("web/static/ice/newice.embd")
 embedding_dict = dict()
+
 with open(file_path_ice, 'r', encoding='utf-8') as f_in:
 	for line in f_in.readlines():
 		line = line.strip().split()
@@ -170,15 +176,17 @@ def rerank_ice(data, query_str):
 		#result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
                 if 'movie' not in result[data[movie_id]['youtuber']].keys():
                     l = []
-                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
+                    res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
+                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description']})
                     result[data[movie_id]['youtuber']]['movie'] = l
                 else:
-                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']});
+                    res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
+                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description']});
 	for key in result.keys():
                 # Add the youtuber information to result dictionary
  		if key in yt_crawler:
                         result[key]['info'] = {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
-	# print(result)
+	print(result)
 	return result
 
 
