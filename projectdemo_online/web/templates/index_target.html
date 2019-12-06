@@ -177,6 +177,7 @@ $(document).ready(function(){
 				return (count < 5);
 			});
 
+
 			$('.list-container').slideDown(400);
 			YTer1_in();
 			setTimeout(YTer2_in, 450);
@@ -186,9 +187,6 @@ $(document).ready(function(){
 			$('.loader').fadeOut(500);
 			$('.white-background').fadeOut(500);
 		});
-
-		// Debug start
-		$('.debug').append('<button id="button" />');
 	});
 	function YTer1_in(){
 		$('.list-container .youtuber-list:first-child').animate({left: '0%'});
@@ -206,20 +204,10 @@ $(document).ready(function(){
 		$('.list-container .youtuber-list:nth-child(5)').animate({left: '0%'});
 	}
 });
-$('.debug').on('click', '#button', function(){
-	$('.debug').append('<br>');
-	$('.debug').append($('.detail .YTer1 li').length);
-	$('.debug').append('<br>');
-	$('.debug').append($('.detail .YTer2 li').length);
-	$('.debug').append('<br>');
-	$('.debug').append($('.detail .YTer3 li').length);
-	$('.debug').append('<br>');
-	$('.debug').append($('.detail .YTer4 li').length);
-	$('.debug').append('<br>');
-	$('.debug').append($('.detail .YTer5 li').length);
-});
 $(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber1', function(){
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer1 li').length);
 		$('.detail .YTer1').css('display', 'block');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'none');
@@ -229,6 +217,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber2', function(){
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer2 li').length);
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'block');
 		$('.detail .YTer3').css('display', 'none');
@@ -238,6 +228,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber3', function(){
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer3 li').length);
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'block');
@@ -247,6 +239,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber4', function(){
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer4 li').length);
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'none');
@@ -256,6 +250,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber5', function(){
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer5 li').length);
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'none');
@@ -278,35 +274,136 @@ $(document).keyup(function(event){
 			$('.white-background').fadeOut(500);
 	}
 });
-	var index = 0;
-	$(".YTer1").on("click", ".btn-left", function(){
-		var liW = $(".detail .YTer1 li").width();
-		var len = $(".detail .YTer1 li").length;
-		var ulW = len*liW;
-		$(".YTer1 .video1").css("width",ulW);
-		index--;
-		alert('width: ' + liW);
-		if(index == -1){
-			index = len - 1;
-		}
-		showLi(index, liW);
-	})
-	$(".YTer1").on("click", ".btn-right", function(){
-		var liW = $(".detail .YTer1 li").width();
-		var len = $(".detail .YTer1 li").length;
-		var ulW = len*liW;
-		$(".YTer1 .video1").css("width",ulW);
-		index++;
-		alert('length: ' + len);
-		if(index == len){
-			index = 0;
-		}
-		showLi(index, liW);
-	})
 
-	function showLi(index, liW){
-		var move = -index * liW
-		$(".video1").stop().animate({"left":move},300)
+var index1 = 0;
+var index2 = 0;
+var index3 = 0;
+var index4 = 0;
+var index5 = 0;
+$(".YTer1").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer1 li").length;
+	var ulW = len * liW;
+	$(".YTer1 .video1").css("width", ulW);
+	$(".YTer1 li").css("width", liW);
+	index1--;
+	if(index1 == -1){
+		index1 = len - 1;
 	}
+	showLi('.video1', index1, liW);
+})
+$(".YTer1").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer1 li").length;
+	var ulW = len * liW;
+	$(".YTer1 .video1").css("width", ulW);
+	$(".YTer1 li").css("width", liW);
+	index1++;
+	if(index1 == len){
+		index1 = 0;
+	}
+	showLi('.video1', index1, liW);
+})
+$(".YTer2").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer2 li").length;
+	var ulW = len * liW;
+	$(".YTer2 .video2").css("width", ulW);
+	$(".YTer2 li").css("width", liW);
+	index2--;
+	if(index2 == -1){
+		index2 = len - 1;
+	}
+	showLi('.video2', index2, liW);
+})
+$(".YTer2").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer2 li").length;
+	var ulW = len * liW;
+	$(".YTer2 .video2").css("width", ulW);
+	$(".YTer2 li").css("width", liW);
+	index2++;
+	if(index2 == len){
+		index2 = 0;
+	}
+	showLi('.video2', index2, liW);
+})
+$(".YTer3").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer3 li").length;
+	var ulW = len * liW;
+	$(".YTer3 .video3").css("width", ulW);
+	$(".YTer3 li").css("width", liW);
+	index3--;
+	if(index3 == -1){
+		index3 = len - 1;
+	}
+	showLi('.video3', index3, liW);
+})
+$(".YTer3").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer3 li").length;
+	var ulW = len * liW;
+	$(".YTer3 .video3").css("width", ulW);
+	$(".YTer3 li").css("width", liW);
+	index3++;
+	if(index3 == len){
+		index3 = 0;
+	}
+	showLi('.video3', index3, liW);
+})
+$(".YTer4").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer4 li").length;
+	var ulW = len * liW;
+	$(".YTer4 .video4").css("width", ulW);
+	$(".YTer4 li").css("width", liW);
+	index4--;
+	if(index4 == -1){
+		index4 = len - 1;
+	}
+	showLi('.video4', index4, liW);
+})
+$(".YTer4").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer4 li").length;
+	var ulW = len * liW;
+	$(".YTer4 .video4").css("width", ulW);
+	$(".YTer4 li").css("width", liW);
+	index4++;
+	if(index4 == len){
+		index4 = 0;
+	}
+	showLi('.video4', index4, liW);
+})
+$(".YTer5").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer5 li").length;
+	var ulW = len * liW;
+	$(".YTer5 .video5").css("width", ulW);
+	$(".YTer5 li").css("width", liW);
+	index5--;
+	if(index5 == -1){
+		index5 = len - 1;
+	}
+	showLi('.video5', index5, liW);
+})
+$(".YTer5").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer5 li").length;
+	var ulW = len * liW;
+	$(".YTer5 .video5").css("width", ulW);
+	$(".YTer5 li").css("width", liW);
+	index5++;
+	if(index5 == len){
+		index5 = 0;
+	}
+	showLi('.video5', index5, liW);
+})
+
+function showLi(ul, index, liW){
+	var move = -index * liW
+	$(ul).stop().animate({"left":move},500)
+}
 	</script>
 </html>
