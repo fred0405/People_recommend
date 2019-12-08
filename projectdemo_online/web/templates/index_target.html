@@ -117,10 +117,10 @@
 					<div class="col l3 s12">
 						<h5 class="golden">Connect</h5>
 						<ul>
-							<li><a class="golden" href="#!">Link 1</a></li>
-							<li><a class="golden" href="#!">Link 2</a></li>
-							<li><a class="golden" href="#!">Link 3</a></li>
-							<li><a class="golden" href="#!">Link 4</a></li>
+							<li><a class="golden" href="mailto:105703003@mail2.nccu.tw">105703003@mail2.nccu.tw</a></li>
+							<li><a class="golden" href="mailto:kim101245@gmail.com">kim101245@gmail.com</a></li>
+							<li><a class="golden" href="mailto:chihung861224@gmail.com">chihung861224@gmail.com</a></li>
+							<li><a class="golden" href="mailto:105703030@mail2.nccu.tw">105703030@mail2.nccu.tw</a></li>
 						</ul>
 					</div>
 				</div>
@@ -169,7 +169,7 @@ $(document).ready(function(){
 				$('.youtuber' + count + '.photo').append('<img src="' + Object.values(val.info)[2] + '" />');
 				$('.detail .YTer' + count).append('<div class="youtuber' + count + ' description">' + Object.values(val.info)[0] + '</div><div class="videos' + count + '"><ul class="video' + count + '"></ul></div><div class="btn btn-left"><</div><div class="btn btn-right">></div>');
 				$.each(val.movie, function(index, movie){
-					$('.video' + count).append('<li style="overflow: hidden;"><div style="width: 50%; height: 100%; float: left;"><iframe width="100%" height="450" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div style="width: 50%; height: 100%; float: left;"><p>' + Object.values(movie)[3] + '</p></div></li>');
+					$('.video' + count).append('<li style="overflow: hidden;"><div class="option-btn"><div class="btn-video">影片</div><div class="btn-description">影片描述</div></div><div class="video-content"><div class="content-video"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="content-description"><p>' + Object.values(movie)[3] + '</p></div></div></li>');
 					return (index < 9);
 				});
 				return (count < 5);
@@ -203,9 +203,53 @@ $(document).ready(function(){
 	}
 });
 $(document).ready(function(){
+	$('.YTer1').on('click', '.btn-video', function(){
+		$('.detail .YTer1 .content-video').fadeIn(500);
+		$('.detail .YTer1 .content-description').fadeOut(500);
+	});
+	$('.YTer1').on('click', '.btn-description', function(){
+		$('.detail .YTer1 .content-video').fadeOut(500);
+		$('.detail .YTer1 .content-description').fadeIn(500);
+	});
+	$('.YTer2').on('click', '.btn-video', function(){
+		$('.detail .YTer2 .content-video').fadeIn(500);
+		$('.detail .YTer2 .content-description').fadeOut(500);
+	});
+	$('.YTer2').on('click', '.btn-description', function(){
+		$('.detail .YTer2 .content-video').fadeOut(500);
+		$('.detail .YTer2 .content-description').fadeIn(500);
+	});
+	$('.YTer3').on('click', '.btn-video', function(){
+		$('.detail .YTer3 .content-video').fadeIn(500);
+		$('.detail .YTer3 .content-description').fadeOut(500);
+	});
+	$('.YTer3').on('click', '.btn-description', function(){
+		$('.detail .YTer3 .content-video').fadeOut(500);
+		$('.detail .YTer3 .content-description').fadeIn(500);
+	});
+	$('.YTer4').on('click', '.btn-video', function(){
+		$('.detail .YTer4 .content-video').fadeIn(500);
+		$('.detail .YTer4 .content-description').fadeOut(500);
+	});
+	$('.YTer4').on('click', '.btn-description', function(){
+		$('.detail .YTer4 .content-video').fadeOut(500);
+		$('.detail .YTer4 .content-description').fadeIn(500);
+	});
+	$('.YTer5').on('click', '.btn-video', function(){
+		$('.detail .YTer5 .content-video').fadeIn(500);
+		$('.detail .YTer5 .content-description').fadeOut(500);
+	});
+	$('.YTer5').on('click', '.btn-description', function(){
+		$('.detail .YTer5 .content-video').fadeOut(500);
+		$('.detail .YTer5 .content-description').fadeIn(500);
+	});
+});
+$(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber1', function(){
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer1 li').length);
+		$('.detail .YTer1 .content-video').css('display', 'block');
+		$('.detail .YTer1 .content-description').css('display', 'none');
 		$('.detail .YTer1').css('display', 'block');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'none');
@@ -217,6 +261,8 @@ $(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber2', function(){
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer2 li').length);
+		$('.detail .YTer2 .content-video').css('display', 'block');
+		$('.detail .YTer2 .content-description').css('display', 'none');
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'block');
 		$('.detail .YTer3').css('display', 'none');
@@ -228,6 +274,8 @@ $(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber3', function(){
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer3 li').length);
+		$('.detail .YTer3 .content-video').css('display', 'block');
+		$('.detail .YTer3 .content-description').css('display', 'none');
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'block');
@@ -239,6 +287,8 @@ $(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber4', function(){
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer4 li').length);
+		$('.detail .YTer4 .content-video').css('display', 'block');
+		$('.detail .YTer4 .content-description').css('display', 'none');
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'none');
@@ -250,6 +300,8 @@ $(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber5', function(){
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer5 li').length);
+		$('.detail .YTer5 .content-video').css('display', 'block');
+		$('.detail .YTer5 .content-description').css('display', 'none');
 		$('.detail .YTer1').css('display', 'none');
 		$('.detail .YTer2').css('display', 'none');
 		$('.detail .YTer3').css('display', 'none');
@@ -288,7 +340,9 @@ $(".YTer1").on("click", ".btn-left", function(){
 	if(index1 == -1){
 		index1 = len - 1;
 	}
+	$('.detail .YTer1 .content-description').fadeOut(600);
 	showLi('.video1', index1, liW);
+	$('.detail .YTer1 .content-video').fadeIn(600);
 })
 $(".YTer1").on("click", ".btn-right", function(){
 	var liW = $(".detail").width();
@@ -300,7 +354,9 @@ $(".YTer1").on("click", ".btn-right", function(){
 	if(index1 == len){
 		index1 = 0;
 	}
+	$('.detail .YTer1 .content-description').fadeOut(600);
 	showLi('.video1', index1, liW);
+	$('.detail .YTer1 .content-video').fadeIn(600);
 })
 $(".YTer2").on("click", ".btn-left", function(){
 	var liW = $(".detail").width();
@@ -312,7 +368,9 @@ $(".YTer2").on("click", ".btn-left", function(){
 	if(index2 == -1){
 		index2 = len - 1;
 	}
+	$('.detail .YTer2 .content-description').fadeOut(600);
 	showLi('.video2', index2, liW);
+	$('.detail .YTer2 .content-video').fadeIn(600);
 })
 $(".YTer2").on("click", ".btn-right", function(){
 	var liW = $(".detail").width();
@@ -324,7 +382,9 @@ $(".YTer2").on("click", ".btn-right", function(){
 	if(index2 == len){
 		index2 = 0;
 	}
+	$('.detail .YTer2 .content-description').fadeOut(600);
 	showLi('.video2', index2, liW);
+	$('.detail .YTer2 .content-video').fadeIn(600);
 })
 $(".YTer3").on("click", ".btn-left", function(){
 	var liW = $(".detail").width();
@@ -336,7 +396,9 @@ $(".YTer3").on("click", ".btn-left", function(){
 	if(index3 == -1){
 		index3 = len - 1;
 	}
+	$('.detail .YTer3 .content-description').fadeOut(600);
 	showLi('.video3', index3, liW);
+	$('.detail .YTer3 .content-video').fadeIn(600);
 })
 $(".YTer3").on("click", ".btn-right", function(){
 	var liW = $(".detail").width();
@@ -348,7 +410,9 @@ $(".YTer3").on("click", ".btn-right", function(){
 	if(index3 == len){
 		index3 = 0;
 	}
+	$('.detail .YTer3 .content-description').fadeOut(600);
 	showLi('.video3', index3, liW);
+	$('.detail .YTer3 .content-video').fadeIn(600);
 })
 $(".YTer4").on("click", ".btn-left", function(){
 	var liW = $(".detail").width();
@@ -360,7 +424,9 @@ $(".YTer4").on("click", ".btn-left", function(){
 	if(index4 == -1){
 		index4 = len - 1;
 	}
+	$('.detail .YTer4 .content-description').fadeOut(600);
 	showLi('.video4', index4, liW);
+	$('.detail .YTer4 .content-video').fadeIn(600);
 })
 $(".YTer4").on("click", ".btn-right", function(){
 	var liW = $(".detail").width();
@@ -372,7 +438,9 @@ $(".YTer4").on("click", ".btn-right", function(){
 	if(index4 == len){
 		index4 = 0;
 	}
+	$('.detail .YTer4 .content-description').fadeOut(600);
 	showLi('.video4', index4, liW);
+	$('.detail .YTer4 .content-video').fadeIn(600);
 })
 $(".YTer5").on("click", ".btn-left", function(){
 	var liW = $(".detail").width();
@@ -384,7 +452,9 @@ $(".YTer5").on("click", ".btn-left", function(){
 	if(index5 == -1){
 		index5 = len - 1;
 	}
+	$('.detail .YTer5 .content-description').fadeOut(600);
 	showLi('.video5', index5, liW);
+	$('.detail .YTer5 .content-video').fadeIn(600);
 })
 $(".YTer5").on("click", ".btn-right", function(){
 	var liW = $(".detail").width();
@@ -396,7 +466,9 @@ $(".YTer5").on("click", ".btn-right", function(){
 	if(index5 == len){
 		index5 = 0;
 	}
+	$('.detail .YTer5 .content-description').fadeOut(600);
 	showLi('.video5', index5, liW);
+	$('.detail .YTer5 .content-video').fadeIn(600);
 })
 
 function showLi(ul, index, liW){

@@ -177,15 +177,15 @@ def rerank_ice(data, query_str):
                 if 'movie' not in result[data[movie_id]['youtuber']].keys():
                     l = []
                     res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
-                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description']})
+                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description'].replace('\n', '<br>')})
                     result[data[movie_id]['youtuber']]['movie'] = l
                 else:
                     res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
-                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description']});
+                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description'].replace('\n', '<br>')})
 	for key in result.keys():
                 # Add the youtuber information to result dictionary
  		if key in yt_crawler:
-                        result[key]['info'] = {'intro': yt_crawler[key][0], 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
+                        result[key]['info'] = {'intro': yt_crawler[key][0].replace('\n', '<br>'), 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
 	print(result)
 	return result
 
