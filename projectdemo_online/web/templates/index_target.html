@@ -204,48 +204,68 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
 	$('.YTer1').on('click', '.btn-video', function(){
+		select_video();
 		$('.detail .YTer1 .content-video').fadeIn(500);
 		$('.detail .YTer1 .content-description').fadeOut(500);
 	});
 	$('.YTer1').on('click', '.btn-description', function(){
+		select_description();
 		$('.detail .YTer1 .content-video').fadeOut(500);
 		$('.detail .YTer1 .content-description').fadeIn(500);
 	});
 	$('.YTer2').on('click', '.btn-video', function(){
+		select_video();
 		$('.detail .YTer2 .content-video').fadeIn(500);
 		$('.detail .YTer2 .content-description').fadeOut(500);
 	});
 	$('.YTer2').on('click', '.btn-description', function(){
+		select_description();
 		$('.detail .YTer2 .content-video').fadeOut(500);
 		$('.detail .YTer2 .content-description').fadeIn(500);
 	});
 	$('.YTer3').on('click', '.btn-video', function(){
+		select_video();
 		$('.detail .YTer3 .content-video').fadeIn(500);
 		$('.detail .YTer3 .content-description').fadeOut(500);
 	});
 	$('.YTer3').on('click', '.btn-description', function(){
+		select_description();
 		$('.detail .YTer3 .content-video').fadeOut(500);
 		$('.detail .YTer3 .content-description').fadeIn(500);
 	});
 	$('.YTer4').on('click', '.btn-video', function(){
+		select_video();
 		$('.detail .YTer4 .content-video').fadeIn(500);
 		$('.detail .YTer4 .content-description').fadeOut(500);
 	});
 	$('.YTer4').on('click', '.btn-description', function(){
+		select_description();
 		$('.detail .YTer4 .content-video').fadeOut(500);
 		$('.detail .YTer4 .content-description').fadeIn(500);
 	});
 	$('.YTer5').on('click', '.btn-video', function(){
+		select_video();
 		$('.detail .YTer5 .content-video').fadeIn(500);
 		$('.detail .YTer5 .content-description').fadeOut(500);
 	});
 	$('.YTer5').on('click', '.btn-description', function(){
+		select_description();
 		$('.detail .YTer5 .content-video').fadeOut(500);
 		$('.detail .YTer5 .content-description').fadeIn(500);
 	});
+	function select_video(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+	}
+	function select_description(){
+		$('.detail .btn-video').css('background-color', '#f5f5f5');
+		$('.detail .btn-description').css('background-color', '#d3d3d3');
+	}
 });
 $(document).ready(function(){
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber1', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer1 li').length);
 		$('.detail .YTer1 .content-video').css('display', 'block');
@@ -259,6 +279,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber2', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer2 li').length);
 		$('.detail .YTer2 .content-video').css('display', 'block');
@@ -272,6 +294,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber3', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer3 li').length);
 		$('.detail .YTer3 .content-video').css('display', 'block');
@@ -285,6 +309,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber4', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer4 li').length);
 		$('.detail .YTer4 .content-video').css('display', 'block');
@@ -298,6 +324,8 @@ $(document).ready(function(){
 		$('.white-background').fadeIn(500);
 	});
 	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber5', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
 		$('.detail li').css('width', $('.detail').width());
 		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer5 li').length);
 		$('.detail .YTer5 .content-video').css('display', 'block');
@@ -472,6 +500,8 @@ $(".YTer5").on("click", ".btn-right", function(){
 })
 
 function showLi(ul, index, liW){
+	$('.detail .btn-video').css('background-color', '#d3d3d3');
+	$('.detail .btn-description').css('background-color', '#f5f5f5');
 	var move = -index * liW
 	$(ul).stop().animate({"left":move},500)
 }

@@ -186,7 +186,7 @@ def rerank_ice(data, query_str):
                 # Add the youtuber information to result dictionary
  		if key in yt_crawler:
                         result[key]['info'] = {'intro': yt_crawler[key][0].replace('\n', '<br>'), 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
-	print(result)
+	#print(result)
 	return result
 
 
