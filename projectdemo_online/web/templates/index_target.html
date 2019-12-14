@@ -83,6 +83,7 @@
 				</div>
 			</div>
 			<div class="parallax"><img src={% static "images/background4.jpg" %} alt="Unsplashed background img 1"/></div>
+			<!--div class="parallax"><img src={% static "images/background5.jpg" %} alt="Unsplashed background img 1"/></div-->
 		</div>
 
 
@@ -343,6 +344,7 @@ $(document).ready(function(){
 	$('.white-background').on('click', function(){
 		$('.detail').fadeOut(500);
 		$('.white-background').fadeOut(500);
+		$('.loader').fadeOut(500);
 	});
 });
 $(document).keyup(function(event){
@@ -350,6 +352,7 @@ $(document).keyup(function(event){
 		case 27:
 			$('.detail').fadeOut(500);
 			$('.white-background').fadeOut(500);
+			$('.loader').fadeOut(500);
 	}
 });
 

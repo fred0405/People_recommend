@@ -33,7 +33,8 @@ def index(request):
 	context['hello'] = 'Hello World!'
         # Change the frontend web page file
 	#return render(request, 'index.ejs', context)
-	return render(request, 'index_target.html', context)
+	#return render(request, 'index_target.html', context)
+	return render(request, 'index.html', context)
 @csrf_exempt
 def rshow(request):
 	print(request.POST['keyword'])
@@ -151,7 +152,7 @@ def rerank(data):
 def rerank_ice(data, query_str):
         # Youtuber information
 	file_index_path =  os.path.abspath("web/")
-	file = open(file_index_path + '/yt_js.txt', 'r') 
+	file = open(file_index_path + '/yt_js.txt', 'r', encoding='utf-8') 
 	js = file.read()
 	yt_crawler = json.loads(js)
 	file.close()
