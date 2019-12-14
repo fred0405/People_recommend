@@ -20,7 +20,7 @@ p {
 }
 
 .parallax-container {
-	min-height: 380px;
+	/*min-height: 380px;*/
 	line-height: 0;
 	height: auto;
 	color: rgba(255,255,255,.9);
@@ -179,9 +179,9 @@ li{
 	position: relative;
 }
 .YTer .info{
-	width: 25%;
-	height: 100%;
-	padding: 2.5%;
+	width: 20%;
+	height: 95%;
+	margin: 2.5%;
 	float: left;
 }
 .info .photo{
@@ -241,14 +241,14 @@ li{
 }
 .btn-left{
 	position: absolute;
-	left: 0%;
-	top: 60%;
+	left: 25%;
+	top: 50%;
 	margin-top: -30px;
 }
 .btn-right{
 	position: absolute;
 	right: 0%;
-	top: 60%;
+	top: 50%;
 	margin-top: -30px;
 }
 
