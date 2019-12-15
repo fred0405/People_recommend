@@ -167,7 +167,7 @@ def rerank_ice(data, query_str):
 			except:
 				print(data[id]['youtuber'])
 	youtuber_rank = sorted(youtuber_rank.items(), key=lambda d: d[1], reverse=True)
-	print(youtuber_rank,)
+	print(youtuber_rank)
 	for yt in youtuber_rank:
                 # Change the result from array to dictionary
 		#result[yt[0]] = []

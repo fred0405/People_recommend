@@ -151,7 +151,6 @@
 
 $(document).ready(function(){
 	$('.calcOperator').on('click', function(){
-		$('.row.center').animate({width: '50%'});
 		$('.list-container').slideUp('slow');
 		$('.list-container').empty();
 		$('.detail .YTer.1').empty();
@@ -170,7 +169,8 @@ $(document).ready(function(){
 				$('.detail .YTer.' + count).append('<div class="info"><div class="photo"><img src="' + Object.values(val.info)[2] + '" /></div><div class="description">' + Object.values(val.info)[0] + '</div></div>');
 				$('.detail .YTer.' + count).append('<div class="videos ' + count + '"><ul class="video ' + count + '"></ul></div><div class="btn btn-left"><</div><div class="btn btn-right">></div>');
 				$.each(val.movie, function(index, movie){
-					$('.video.' + count).append('<li style="overflow: hidden;"><div class="video-content"><div class="content-video"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="content-description"><p>' + Object.values(movie)[3] + '</p></div></div></li>');
+					//$('.video.' + count).append('<li style="overflow: hidden;"><div class="video-content"><div class="content-video"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="content-description"><p>' + Object.values(movie)[3] + '</p></div></div></li>');
+					$('.video.' + count).append('<li style="overflow: hidden;"><div class="video-content"><div class="content-video"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="content-description"><p></p></div></div></li>');
 					return (index < 9);
 				});
 				return (count < 5);
@@ -179,8 +179,21 @@ $(document).ready(function(){
 
 			$('.list-container').slideDown(400);
 			$('#index-banner h1').css('font-size', '26px');
+			$('#index-banner h1').css('margin-top', '10px');
+			$('#index-banner h1').css('margin-bottom', '10px');
+			$('.row.center').animate({width: '50%'});
+			$('.row.center').css('height', '30px');
+			$('.row.center').css('margin-top', '10px');
+			$('.row.center').css('margin-bottom', '10px');
+			$('.row.center h5').css('margin', '0');
+			$('.row.center h5').css('height', '100%');
+			$('.row.center h5 input').css('width', 'auto');
+			$('.row.center h5 input').css('height', '100%');
+			$('.row.center h5 input').css('margin', '0');
+			$('.row.center button').css('height', '100%');
+			$('.row.center button').css('line-height', 'unset');
 			$('.parallax-container img').css('top', 'auto');
-			$('.parallax-container').animate({height: '30vh'});
+			$('.parallax-container').animate({height: '25vh'});
 			$('footer').fadeOut(400);
 			YTer1_in();
 			setTimeout(YTer2_in, 450);
