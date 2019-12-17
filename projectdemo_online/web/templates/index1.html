@@ -89,7 +89,7 @@
 
 		<div class="container" style="overflow: hidden;">
 			<div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
-				<div class="list-container">
+				<div class="list-container" style="display: none;">
 					<div class="youtuber 1" style="position: relative; left: 150%;">
 						<div class="channal-information"></div><div class="video-preview 1"></div>
 					</div>
@@ -195,6 +195,7 @@ $(document).ready(function(){
 		$('.list-container').slideUp('slow');
 		$('.channal-information').empty();
 		$('.video-preview').empty();
+		$('.youtuber').css('left', '150%');
 		$('.detail .YTer').empty();
 		$('.loader').fadeIn(500);
 		$('.white-background').fadeIn(500);
