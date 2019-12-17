@@ -102,7 +102,6 @@ h1.golden{
 	width: 100%;
 	margin: 30px 0;
 }
-/*.youtuber{*/
 .channal-information{
 	width: 100%;
 	height: 90px;
@@ -110,18 +109,15 @@ h1.golden{
 	/*margin: 30px 0;*/
 	padding: 10px 30px;
 }
-/*.youtuber .photo{*/
 .channal-information .photo{
 	width: 20%;
 	text-align: center;
 	float: left;
 }
-/*.youtuber .photo img{*/
 .channal-information .photo img{
 	width: 70px;
 	border-radius: 35px;
 }
-/*.youtuber .channal{*/
 .channal-information .channal{
 	width: 80%;
 	height: 100%;
