@@ -14,12 +14,12 @@ from numpy import dot
 from numpy.linalg import norm
 import json
 from ckiptagger import *
-from apiclient.discovery import build
+#from apiclient.discovery import build
 
 # Create your views here.
 
-api_key = 'AIzaSyCnUjEPyPAI-WVWGuS3Rdb_5-DDgUp_8u8'
-youtube = build('youtube', 'v3', developerKey=api_key)
+#api_key = 'AIzaSyCnUjEPyPAI-WVWGuS3Rdb_5-DDgUp_8u8'
+#youtube = build('youtube', 'v3', developerKey=api_key)
 
 file_path_ice = os.path.abspath("web/static/ice/newice.embd")
 embedding_dict = dict()
@@ -32,9 +32,9 @@ def index(request):
 	context = {}
 	context['hello'] = 'Hello World!'
         # Change the frontend web page file
-	#return render(request, 'index.ejs', context)
+	return render(request, 'index1.html', context)
 	#return render(request, 'index_target.html', context)
-	return render(request, 'index.html', context)
+	#return render(request, 'index.html', context)
 @csrf_exempt
 def rshow(request):
 	print(request.POST['keyword'])
@@ -152,11 +152,17 @@ def rerank(data):
 def rerank_ice(data, query_str):
         # Youtuber information
 	file_index_path =  os.path.abspath("web/")
-	file = open(file_index_path + '/yt_js.txt', 'r', encoding='utf-8') 
+	file = open(file_index_path + '/yt_js.txt', 'r') 
 	js = file.read()
 	yt_crawler = json.loads(js)
 	file.close()
 	
+
+	file = open(file_index_path + '/ds_js.txt', 'r') 
+	js = file.read()
+	yt_description = json.loads(js)
+	file.close()
+
 	youtuber_rank = dict()
 	result = dict()
 	
@@ -167,7 +173,7 @@ def rerank_ice(data, query_str):
 			except:
 				print(data[id]['youtuber'])
 	youtuber_rank = sorted(youtuber_rank.items(), key=lambda d: d[1], reverse=True)
-	print(youtuber_rank)
+	print(youtuber_rank,)
 	for yt in youtuber_rank:
                 # Change the result from array to dictionary
 		#result[yt[0]] = []
@@ -177,17 +183,26 @@ def rerank_ice(data, query_str):
 		#result[data[movie_id]['youtuber']].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
                 if 'movie' not in result[data[movie_id]['youtuber']].keys():
                     l = []
-                    res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
-                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description'].replace('\n', '<br>')})
+#                    res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
+#                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description'].replace('\n', '<br>')})
+                    l.append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})                    
                     result[data[movie_id]['youtuber']]['movie'] = l
                 else:
-                    res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
-                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score'], 'description': res['items'][0]['snippet']['description'].replace('\n', '<br>')})
+#                    res = youtube.videos().list(id = movie_id, part = 'snippet').execute()
+                    result[data[movie_id]['youtuber']]['movie'].append({'movie_id': movie_id, 'title': data[movie_id]['title'], 'score': data[movie_id]['score']})
 	for key in result.keys():
                 # Add the youtuber information to result dictionary
  		if key in yt_crawler:
                         result[key]['info'] = {'intro': yt_crawler[key][0].replace('\n', '<br>'), 'subscribers': yt_crawler[key][1], 'profile': yt_crawler[key][2]}
-	#print(result)
+                        for value in result[key]['movie']:
+#                        	print(value['movie_id'])
+                        	if value['movie_id'] in yt_description: 
+#                        		print('value')
+                        		value.update({'description': yt_description[value['movie_id']]})
+#                        		result[key]['movie'].append({'description': yt_description[value['movie_id']]})
+
+							
+	print(result)
 	return result
 
 
