@@ -1,0 +1,477 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Youtuber Recommendation</title>
+
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href={% static "css/materialize.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href={% static "css/style.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
+	</head>
+	<body>
+		<div class="white-background"></div>
+		<div class="loader">
+			<div class="preloader-wrapper big active">
+				<div class="spinner-layer spinner-blue">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+
+				<div class="spinner-layer spinner-red">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+
+				<div class="spinner-layer spinner-yellow">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+
+				<div class="spinner-layer spinner-green">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="white-background"></div>
+		<div class="detail">
+			<div class="YTer 1"></div>
+			<div class="YTer 2"></div>
+			<div class="YTer 3"></div>
+			<div class="YTer 4"></div>
+			<div class="YTer 5"></div>
+		</div>
+
+		<div id="index-banner" class="parallax-container" style="height: 60vh;">
+			<div class="section no-pad-bot">
+				<div class="container">
+					<br><br>
+					<h1 class="header center">Youtuber Recommendation</h1>
+					<!--h1 class="header center teal-text text-lighten-2">Youtuber Recommendation</h1-->
+					<div class="row center">
+						<h5 class="header col s12 light"><input id="keyword" type="text" placeholder="Keyword...." style="background-color: white; padding-left: 10px; padding-right: 10px;"/></h5>
+					</div>
+					<div class="row center">
+						<button class="btn-large waves-effect waves-light teal lighten-1 operatorBtn calcOperator kk-hover-shadow">Start Searching</button>
+					</div>
+					<br><br>
+
+				</div>
+			</div>
+			<!--div class="parallax"><img src={% static "images/background4.jpg" %} alt="Unsplashed background img 1"/></div-->
+			<div class="parallax"><img src={% static "images/background5.jpg" %} alt="Unsplashed background img 1"/></div>
+		</div>
+
+
+		<div class="container" style="overflow: hidden;">
+			<div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
+				<div class="list-container" style="display: none;">
+					<div class="youtuber 1" style="position: relative; left: 150%;">
+						<div class="channal-information"></div><div class="video-preview 1"></div>
+					</div>
+					<div class="youtuber 2" style="position: relative; left: 150%;">
+						<div class="channal-information"></div><div class="video-preview 2"></div>
+					</div>
+					<div class="youtuber 3" style="position: relative; left: 150%;">
+						<div class="channal-information"></div><div class="video-preview 3"></div>
+					</div>
+					<div class="youtuber 4" style="position: relative; left: 150%;">
+						<div class="channal-information"></div><div class="video-preview 4"></div>
+					</div>
+					<div class="youtuber 5" style="position: relative; left: 150%;">
+						<div class="channal-information"></div><div class="video-preview 5"></div>
+					</div>
+				</div>
+				<div class="debug"></div>
+			</div>
+		</div>
+
+
+		<footer class="page-footer teal" style="height: 40vh;">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="golden">Group Bio</h5>
+						<p class="golden text-lighten-4">We are a team of college students working on this recommendation project....(<strong>Not finish....</strong>)</p>
+
+
+					</div>
+					<div class="col l3 s12">
+						<h5 class="golden">Members</h5>
+						<ul>
+							<li><a class="golden" href="#!">LAI, Hong-Yi</a></li>
+							<li><a class="golden" href="#!">CHIANG, Mong-Hsun</a></li>
+							<li><a class="golden" href="#!">CHANG, Chi-Hung</a></li>
+							<li><a class="golden" href="#!">LIU, Shang-Chiuan</a></li>
+						</ul>
+					</div>
+					<div class="col l3 s12">
+						<h5 class="golden">Connect</h5>
+						<ul>
+							<li><a class="golden" href="mailto:105703003@mail2.nccu.tw">105703003@mail2.nccu.tw</a></li>
+							<li><a class="golden" href="mailto:kim101245@gmail.com">kim101245@gmail.com</a></li>
+							<li><a class="golden" href="mailto:chihung861224@gmail.com">chihung861224@gmail.com</a></li>
+							<li><a class="golden" href="mailto:105703030@mail2.nccu.tw">105703030@mail2.nccu.tw</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+					Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+				</div>
+			</div>
+		</footer>
+
+
+		<!--  Scripts-->
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src={% static "js/materialize.js" %}></script>
+		<script src={% static "js/init.js" %}></script>
+
+	</body>
+
+	<script>
+		// Mouse touch - search button
+		$('.calcOperator').hover(function(){
+			$(this).stop().animate({'opacity': 0.5});
+		}, function(){
+			$(this).stop().animate({'opacity': 1});
+		});
+
+// Mouse touch - youtuber list
+$('.youtuber.1 .channal-information').hover(function(){
+	$('.youtuber.1 .video-preview').stop().slideDown(500);
+}, function(){
+	$('.youtuber.1 .video-preview').stop().slideUp(500);
+});
+$('.youtuber.2 .channal-information').hover(function(){
+	$('.youtuber.2 .video-preview').stop().slideDown(500);
+}, function(){
+	$('.youtuber.2 .video-preview').stop().slideUp(500);
+});
+$('.youtuber.3 .channal-information').hover(function(){
+	$('.youtuber.3 .video-preview').stop().slideDown(500);
+}, function(){
+	$('.youtuber.3 .video-preview').stop().slideUp(500);
+});
+$('.youtuber.4 .channal-information').hover(function(){
+	$('.youtuber.4 .video-preview').stop().slideDown(500);
+}, function(){
+	$('.youtuber.4 .video-preview').stop().slideUp(500);
+});
+$('.youtuber.5 .channal-information').hover(function(){
+	$('.youtuber.5 .video-preview').stop().slideDown(500);
+}, function(){
+	$('.youtuber.5 .video-preview').stop().slideUp(500);
+});
+
+$(document).ready(function(){
+	$('.calcOperator').on('click', function(){
+		$('.list-container').slideUp('slow');
+		$('.channal-information').empty();
+		$('.video-preview').empty();
+		$('.youtuber').css('left', '150%');
+		$('.detail .YTer').empty();
+		$('.loader').fadeIn(500);
+		$('.white-background').fadeIn(500);
+
+		$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
+			var count = 0;
+			$.each(JSON.parse(rtn.result), function(idx, val){
+				count = count + 1;
+				// Youtuber list template
+				$('.youtuber.' + count + ' .channal-information').append('<div class="photo"><img src="' + Object.values(val.info)[2] + '" /></div><div class="channal"><div class="name">' + idx + '</div><div class="subscriber">' + Object.values(val.info)[1] + '</div></div></div>');
+				// Control block
+				$('.video-preview.' + count).append('<div class="control-block"></div>');
+				// Youtuber detail template
+				$('.detail .YTer.' + count).append('<div class="info"><div class="photo"><img src="' + Object.values(val.info)[2] + '" /></div><div class="description">' + Object.values(val.info)[0] + '</div></div>');
+				// Youtuber videos template
+				$('.detail .YTer.' + count).append('<div class="videos ' + count + '"><ul class="video ' + count + '"></ul></div><div class="btn btn-left"><</div><div class="btn btn-right">></div>');
+				// Add videos
+				$.each(val.movie, function(index, movie){
+					// Preview
+					if(index < 3){
+						$('.video-preview.' + count).append('<div class="preview"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
+					}
+					// Detail
+					$('.video.' + count).append('<li style="overflow: hidden;"><div class="video-content"><div class="content-video"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="content-description"><p>' + Object.values(movie)[3] + '</p></div></div></li>');
+					return (index < 9);
+				});
+				return (count < 5);
+			});
+
+
+			$('.list-container').slideDown(400);
+			$('#index-banner h1').css('font-size', '26px');
+			$('#index-banner h1').css('margin-top', '10px');
+			$('#index-banner h1').css('margin-bottom', '10px');
+			$('.row.center').animate({width: '50%'});
+			$('.row.center').css('height', '30px');
+			$('.row.center').css('margin-top', '10px');
+			$('.row.center').css('margin-bottom', '10px');
+			$('.row.center h5').css('margin', '0');
+			$('.row.center h5').css('height', '100%');
+			$('.row.center h5 input').css('width', 'auto');
+			$('.row.center h5 input').css('height', '100%');
+			$('.row.center h5 input').css('margin', '0');
+			$('.row.center button').css('height', '100%');
+			$('.row.center button').css('line-height', 'unset');
+			$('.parallax-container .parallax').animate({top: '97%'});
+			$('.parallax-container img').css('top', 'auto');
+			$('.parallax-container').animate({height: '25vh'});
+			$('footer').fadeOut(400);
+			YTer1_in();
+			setTimeout(YTer2_in, 450);
+			setTimeout(YTer3_in, 900);
+			setTimeout(YTer4_in, 1350);
+			setTimeout(YTer5_in, 1800);
+			$('.loader').fadeOut(500);
+			$('.white-background').fadeOut(500);
+		});
+	});
+	function YTer1_in(){
+		$('.list-container .youtuber.1').animate({left: '0%'});
+	}
+	function YTer2_in(){
+		$('.list-container .youtuber.2').animate({left: '0%'});
+	}
+	function YTer3_in(){
+		$('.list-container .youtuber.3').animate({left: '0%'});
+	}
+	function YTer4_in(){
+		$('.list-container .youtuber.4').animate({left: '0%'});
+	}
+	function YTer5_in(){
+		$('.list-container .youtuber.5').animate({left: '0%'});
+	}
+});
+$(document).ready(function(){
+	$('.list-container').on('click', '.youtuber.1 .channal-information', function(){
+		$('.detail li').css('width', $('body').width() * 0.8 * 0.7);
+		$('.detail ul').css('width', $('body').width() * 0.8 * 0.7 * $('.detail .YTer.1 li').length);
+		$('.detail .YTer.1').css('display', 'block');
+		$('.detail .YTer.2').css('display', 'none');
+		$('.detail .YTer.3').css('display', 'none');
+		$('.detail .YTer.4').css('display', 'none');
+		$('.detail .YTer.5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber.2 .channal-information', function(){
+		$('.detail li').css('width', $('body').width() * 0.8 * 0.7);
+		$('.detail ul').css('width', $('body').width() * 0.8 * 0.7 * $('.detail .YTer.2 li').length);
+		$('.detail .YTer.1').css('display', 'none');
+		$('.detail .YTer.2').css('display', 'block');
+		$('.detail .YTer.3').css('display', 'none');
+		$('.detail .YTer.4').css('display', 'none');
+		$('.detail .YTer.5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber.3 .channal-information', function(){
+		$('.detail li').css('width', $('body').width() * 0.8 * 0.7);
+		$('.detail ul').css('width', $('body').width() * 0.8 * 0.7 * $('.detail .YTer.3 li').length);
+		$('.detail .YTer.1').css('display', 'none');
+		$('.detail .YTer.2').css('display', 'none');
+		$('.detail .YTer.3').css('display', 'block');
+		$('.detail .YTer.4').css('display', 'none');
+		$('.detail .YTer.5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber.4 .channal-information', function(){
+		$('.detail li').css('width', $('body').width() * 0.8 * 0.7);
+		$('.detail ul').css('width', $('body').width() * 0.8 * 0.7 * $('.detail .YTer.4 li').length);
+		$('.detail .YTer.1').css('display', 'none');
+		$('.detail .YTer.2').css('display', 'none');
+		$('.detail .YTer.3').css('display', 'none');
+		$('.detail .YTer.4').css('display', 'block');
+		$('.detail .YTer.5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber.5 .channal-information', function(){
+		$('.detail li').css('width', $('body').width() * 0.8 * 0.7);
+		$('.detail ul').css('width', $('body').width() * 0.8 * 0.7 * $('.detail .YTer.5 li').length);
+		$('.detail .YTer.1').css('display', 'none');
+		$('.detail .YTer.2').css('display', 'none');
+		$('.detail .YTer.3').css('display', 'none');
+		$('.detail .YTer.4').css('display', 'none');
+		$('.detail .YTer.5').css('display', 'block');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+});
+$(document).ready(function(){
+	$('.white-background').on('click', function(){
+		$('.detail').fadeOut(500);
+		$('.white-background').fadeOut(500);
+		$('.loader').fadeOut(500);
+	});
+});
+$(document).keyup(function(event){
+	switch(event.keyCode){
+		case 27:
+			$('.detail').fadeOut(500);
+			$('.white-background').fadeOut(500);
+			$('.loader').fadeOut(500);
+	}
+});
+
+var index1 = 0;
+var index2 = 0;
+var index3 = 0;
+var index4 = 0;
+var index5 = 0;
+$(".YTer.1").on("click", ".btn-left", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.1 li").length;
+	var ulW = len * liW;
+	$(".YTer.1 .video.1").css("width", ulW);
+	$(".YTer.1 li").css("width", liW);
+	index1--;
+	if(index1 == -1){
+		index1 = len - 1;
+	}
+	showLi('.video.1', index1, liW);
+})
+$(".YTer.1").on("click", ".btn-right", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.1 li").length;
+	var ulW = len * liW;
+	$(".YTer.1 .video.1").css("width", ulW);
+	$(".YTer.1 li").css("width", liW);
+	index1++;
+	if(index1 == len){
+		index1 = 0;
+	}
+	showLi('.video.1', index1, liW);
+})
+$(".YTer.2").on("click", ".btn-left", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.2 li").length;
+	var ulW = len * liW;
+	$(".YTer.2 .video.2").css("width", ulW);
+	$(".YTer.2 li").css("width", liW);
+	index2--;
+	if(index2 == -1){
+		index2 = len - 1;
+	}
+	showLi('.video.2', index2, liW);
+})
+$(".YTer.2").on("click", ".btn-right", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.2 li").length;
+	var ulW = len * liW;
+	$(".YTer.2 .video.2").css("width", ulW);
+	$(".YTer.2 li").css("width", liW);
+	index2++;
+	if(index2 == len){
+		index2 = 0;
+	}
+	showLi('.video.2', index2, liW);
+})
+$(".YTer.3").on("click", ".btn-left", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.3 li").length;
+	var ulW = len * liW;
+	$(".YTer.3 .video.3").css("width", ulW);
+	$(".YTer.3 li").css("width", liW);
+	index3--;
+	if(index3 == -1){
+		index3 = len - 1;
+	}
+	showLi('.video.3', index3, liW);
+})
+$(".YTer.3").on("click", ".btn-right", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.3 li").length;
+	var ulW = len * liW;
+	$(".YTer.3 .video.3").css("width", ulW);
+	$(".YTer.3 li").css("width", liW);
+	index3++;
+	if(index3 == len){
+		index3 = 0;
+	}
+	showLi('.video.3', index3, liW);
+})
+$(".YTer.4").on("click", ".btn-left", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.4 li").length;
+	var ulW = len * liW;
+	$(".YTer.4 .video.4").css("width", ulW);
+	$(".YTer.4 li").css("width", liW);
+	index4--;
+	if(index4 == -1){
+		index4 = len - 1;
+	}
+	showLi('.video.4', index4, liW);
+})
+$(".YTer.4").on("click", ".btn-right", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.4 li").length;
+	var ulW = len * liW;
+	$(".YTer.4 .video.4").css("width", ulW);
+	$(".YTer.4 li").css("width", liW);
+	index4++;
+	if(index4 == len){
+		index4 = 0;
+	}
+	showLi('.video.4', index4, liW);
+})
+$(".YTer.5").on("click", ".btn-left", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.5 li").length;
+	var ulW = len * liW;
+	$(".YTer.5 .video.5").css("width", ulW);
+	$(".YTer.5 li").css("width", liW);
+	index5--;
+	if(index5 == -1){
+		index5 = len - 1;
+	}
+	showLi('.video.5', index5, liW);
+})
+$(".YTer.5").on("click", ".btn-right", function(){
+	var liW = $("body").width() * 0.8 * 0.7;
+	var len = $(".detail .YTer.5 li").length;
+	var ulW = len * liW;
+	$(".YTer.5 .video.5").css("width", ulW);
+	$(".YTer.5 li").css("width", liW);
+	index5++;
+	if(index5 == len){
+		index5 = 0;
+	}
+	showLi('.video.5', index5, liW);
+})
+
+function showLi(ul, index, liW){
+	var move = -index * liW
+	$(ul).stop().animate({"left":move},500)
+}
+	</script>
+</html>

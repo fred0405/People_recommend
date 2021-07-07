@@ -1,0 +1,512 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Youtuber Recommendation</title>
+
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href={% static "css/materialize.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href={% static "css/style2.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
+	</head>
+	<body>
+		<div class="white-background"></div>
+		<div class="loader">
+			<div class="preloader-wrapper big active">
+				<div class="spinner-layer spinner-blue">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+
+				<div class="spinner-layer spinner-red">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+
+				<div class="spinner-layer spinner-yellow">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+
+				<div class="spinner-layer spinner-green">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="white-background"></div>
+		<div class="detail">
+			<div class="YTer1"></div>
+			<div class="YTer2"></div>
+			<div class="YTer3"></div>
+			<div class="YTer4"></div>
+			<div class="YTer5"></div>
+		</div>
+
+		<div id="index-banner" class="parallax-container">
+			<div class="section no-pad-bot">
+				<div class="container">
+					<br><br>
+					<h1 class="header center golden">Youtuber Recommendation</h1>
+					<!--h1 class="header center teal-text text-lighten-2">Youtuber Recommendation</h1-->
+					<div class="row center">
+						<h5 class="header col s12 light"><input id="keyword" type="text" placeholder="Keyword...." style="background-color: white; padding-left: 10px; padding-right: 10px;"/></h5>
+					</div>
+					<div class="row center">
+						<button class="btn-large waves-effect waves-light teal lighten-1 operatorBtn calcOperator kk-hover-shadow">Start Searching</button>
+					</div>
+					<br><br>
+
+				</div>
+			</div>
+			<div class="parallax"><img src={% static "images/background4.jpg" %} alt="Unsplashed background img 1"/></div>
+			<!--div class="parallax"><img src={% static "images/background5.jpg" %} alt="Unsplashed background img 1"/></div-->
+		</div>
+
+
+		<div class="container" style="overflow: hidden;">
+			<div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
+				<div class="list-container">
+
+				</div>
+				<div class="debug"></div>
+			</div>
+		</div>
+
+
+		<footer class="page-footer teal">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="golden">Group Bio</h5>
+						<p class="golden text-lighten-4">We are a team of college students working on this recommendation project....(<strong>Not finish....</strong>)</p>
+
+
+					</div>
+					<div class="col l3 s12">
+						<h5 class="golden">Members</h5>
+						<ul>
+							<li><a class="golden" href="#!">LAI, Hong-Yi</a></li>
+							<li><a class="golden" href="#!">CHIANG, Mong-Hsun</a></li>
+							<li><a class="golden" href="#!">CHANG, Chi-Hung</a></li>
+							<li><a class="golden" href="#!">LIU, Shang-Chiuan</a></li>
+						</ul>
+					</div>
+					<div class="col l3 s12">
+						<h5 class="golden">Connect</h5>
+						<ul>
+							<li><a class="golden" href="mailto:105703003@mail2.nccu.tw">105703003@mail2.nccu.tw</a></li>
+							<li><a class="golden" href="mailto:kim101245@gmail.com">kim101245@gmail.com</a></li>
+							<li><a class="golden" href="mailto:chihung861224@gmail.com">chihung861224@gmail.com</a></li>
+							<li><a class="golden" href="mailto:105703030@mail2.nccu.tw">105703030@mail2.nccu.tw</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+					Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+				</div>
+			</div>
+		</footer>
+
+
+		<!--  Scripts-->
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src={% static "js/materialize.js" %}></script>
+		<script src={% static "js/init.js" %}></script>
+
+	</body>
+
+	<script>
+		// mouse touch
+		$('.calcOperator').hover(function(){
+			$(this).stop().animate({'opacity': 0.5});
+		}, function(){
+			$(this).stop().animate({'opacity': 1});
+		});
+
+$(document).ready(function(){
+	$('.calcOperator').on('click', function(){
+		$('.row.center').animate({width: '50%'});
+		$('.list-container').slideUp('slow');
+		$('.list-container').empty();
+		$('.detail .YTer1').empty();
+		$('.detail .YTer2').empty();
+		$('.detail .YTer3').empty();
+		$('.detail .YTer4').empty();
+		$('.detail .YTer5').empty();
+		$('.loader').fadeIn(500);
+		$('.white-background').fadeIn(500);
+
+		$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
+			var count = 0;
+			$.each(JSON.parse(rtn.result), function(idx, val){
+				count = count + 1;
+				$('.list-container').append('<div class="youtuber-list" style="position: relative; left: 150%;"><div class="youtuber' + count + ' photo"></div><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="subscriber">' + Object.values(val.info)[1] + '</div>');
+				$('.youtuber' + count + '.photo').append('<img src="' + Object.values(val.info)[2] + '" />');
+				$('.detail .YTer' + count).append('<div class="youtuber' + count + ' description">' + Object.values(val.info)[0] + '</div><div class="videos' + count + '"><ul class="video' + count + '"></ul></div><div class="btn btn-left"><</div><div class="btn btn-right">></div>');
+				$.each(val.movie, function(index, movie){
+					$('.video' + count).append('<li style="overflow: hidden;"><div class="option-btn"><div class="btn-video">影片</div><div class="btn-description">影片描述</div></div><div class="video-content"><div class="content-video"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + Object.values(movie)[0] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="content-description"><p>' + Object.values(movie)[3] + '</p></div></div></li>');
+					return (index < 9);
+				});
+				return (count < 5);
+			});
+
+
+			$('.list-container').slideDown(400);
+			YTer1_in();
+			setTimeout(YTer2_in, 450);
+			setTimeout(YTer3_in, 900);
+			setTimeout(YTer4_in, 1350);
+			setTimeout(YTer5_in, 1800);
+			$('.loader').fadeOut(500);
+			$('.white-background').fadeOut(500);
+		});
+	});
+	function YTer1_in(){
+		$('.list-container .youtuber-list:first-child').animate({left: '0%'});
+	}
+	function YTer2_in(){
+		$('.list-container .youtuber-list:nth-child(2)').animate({left: '0%'});
+	}
+	function YTer3_in(){
+		$('.list-container .youtuber-list:nth-child(3)').animate({left: '0%'});
+	}
+	function YTer4_in(){
+		$('.list-container .youtuber-list:nth-child(4)').animate({left: '0%'});
+	}
+	function YTer5_in(){
+		$('.list-container .youtuber-list:nth-child(5)').animate({left: '0%'});
+	}
+});
+$(document).ready(function(){
+	$('.YTer1').on('click', '.btn-video', function(){
+		select_video();
+		$('.detail .YTer1 .content-video').fadeIn(500);
+		$('.detail .YTer1 .content-description').fadeOut(500);
+	});
+	$('.YTer1').on('click', '.btn-description', function(){
+		select_description();
+		$('.detail .YTer1 .content-video').fadeOut(500);
+		$('.detail .YTer1 .content-description').fadeIn(500);
+	});
+	$('.YTer2').on('click', '.btn-video', function(){
+		select_video();
+		$('.detail .YTer2 .content-video').fadeIn(500);
+		$('.detail .YTer2 .content-description').fadeOut(500);
+	});
+	$('.YTer2').on('click', '.btn-description', function(){
+		select_description();
+		$('.detail .YTer2 .content-video').fadeOut(500);
+		$('.detail .YTer2 .content-description').fadeIn(500);
+	});
+	$('.YTer3').on('click', '.btn-video', function(){
+		select_video();
+		$('.detail .YTer3 .content-video').fadeIn(500);
+		$('.detail .YTer3 .content-description').fadeOut(500);
+	});
+	$('.YTer3').on('click', '.btn-description', function(){
+		select_description();
+		$('.detail .YTer3 .content-video').fadeOut(500);
+		$('.detail .YTer3 .content-description').fadeIn(500);
+	});
+	$('.YTer4').on('click', '.btn-video', function(){
+		select_video();
+		$('.detail .YTer4 .content-video').fadeIn(500);
+		$('.detail .YTer4 .content-description').fadeOut(500);
+	});
+	$('.YTer4').on('click', '.btn-description', function(){
+		select_description();
+		$('.detail .YTer4 .content-video').fadeOut(500);
+		$('.detail .YTer4 .content-description').fadeIn(500);
+	});
+	$('.YTer5').on('click', '.btn-video', function(){
+		select_video();
+		$('.detail .YTer5 .content-video').fadeIn(500);
+		$('.detail .YTer5 .content-description').fadeOut(500);
+	});
+	$('.YTer5').on('click', '.btn-description', function(){
+		select_description();
+		$('.detail .YTer5 .content-video').fadeOut(500);
+		$('.detail .YTer5 .content-description').fadeIn(500);
+	});
+	function select_video(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+	}
+	function select_description(){
+		$('.detail .btn-video').css('background-color', '#f5f5f5');
+		$('.detail .btn-description').css('background-color', '#d3d3d3');
+	}
+});
+$(document).ready(function(){
+	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber1', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer1 li').length);
+		$('.detail .YTer1 .content-video').css('display', 'block');
+		$('.detail .YTer1 .content-description').css('display', 'none');
+		$('.detail .YTer1').css('display', 'block');
+		$('.detail .YTer2').css('display', 'none');
+		$('.detail .YTer3').css('display', 'none');
+		$('.detail .YTer4').css('display', 'none');
+		$('.detail .YTer5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber2', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer2 li').length);
+		$('.detail .YTer2 .content-video').css('display', 'block');
+		$('.detail .YTer2 .content-description').css('display', 'none');
+		$('.detail .YTer1').css('display', 'none');
+		$('.detail .YTer2').css('display', 'block');
+		$('.detail .YTer3').css('display', 'none');
+		$('.detail .YTer4').css('display', 'none');
+		$('.detail .YTer5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber3', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer3 li').length);
+		$('.detail .YTer3 .content-video').css('display', 'block');
+		$('.detail .YTer3 .content-description').css('display', 'none');
+		$('.detail .YTer1').css('display', 'none');
+		$('.detail .YTer2').css('display', 'none');
+		$('.detail .YTer3').css('display', 'block');
+		$('.detail .YTer4').css('display', 'none');
+		$('.detail .YTer5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber4', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer4 li').length);
+		$('.detail .YTer4 .content-video').css('display', 'block');
+		$('.detail .YTer4 .content-description').css('display', 'none');
+		$('.detail .YTer1').css('display', 'none');
+		$('.detail .YTer2').css('display', 'none');
+		$('.detail .YTer3').css('display', 'none');
+		$('.detail .YTer4').css('display', 'block');
+		$('.detail .YTer5').css('display', 'none');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+	$('.list-container').on('click', '.youtuber-list .youtuber.youtuber5', function(){
+		$('.detail .btn-video').css('background-color', '#d3d3d3');
+		$('.detail .btn-description').css('background-color', '#f5f5f5');
+		$('.detail li').css('width', $('.detail').width());
+		$('.detail ul').css('width', $('.detail').width() * $('.detail .YTer5 li').length);
+		$('.detail .YTer5 .content-video').css('display', 'block');
+		$('.detail .YTer5 .content-description').css('display', 'none');
+		$('.detail .YTer1').css('display', 'none');
+		$('.detail .YTer2').css('display', 'none');
+		$('.detail .YTer3').css('display', 'none');
+		$('.detail .YTer4').css('display', 'none');
+		$('.detail .YTer5').css('display', 'block');
+		$('.detail').fadeIn(500);
+		$('.white-background').fadeIn(500);
+	});
+});
+$(document).ready(function(){
+	$('.white-background').on('click', function(){
+		$('.detail').fadeOut(500);
+		$('.white-background').fadeOut(500);
+		$('.loader').fadeOut(500);
+	});
+});
+$(document).keyup(function(event){
+	switch(event.keyCode){
+		case 27:
+			$('.detail').fadeOut(500);
+			$('.white-background').fadeOut(500);
+			$('.loader').fadeOut(500);
+	}
+});
+
+var index1 = 0;
+var index2 = 0;
+var index3 = 0;
+var index4 = 0;
+var index5 = 0;
+$(".YTer1").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer1 li").length;
+	var ulW = len * liW;
+	$(".YTer1 .video1").css("width", ulW);
+	$(".YTer1 li").css("width", liW);
+	index1--;
+	if(index1 == -1){
+		index1 = len - 1;
+	}
+	$('.detail .YTer1 .content-description').fadeOut(600);
+	showLi('.video1', index1, liW);
+	$('.detail .YTer1 .content-video').fadeIn(600);
+})
+$(".YTer1").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer1 li").length;
+	var ulW = len * liW;
+	$(".YTer1 .video1").css("width", ulW);
+	$(".YTer1 li").css("width", liW);
+	index1++;
+	if(index1 == len){
+		index1 = 0;
+	}
+	$('.detail .YTer1 .content-description').fadeOut(600);
+	showLi('.video1', index1, liW);
+	$('.detail .YTer1 .content-video').fadeIn(600);
+})
+$(".YTer2").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer2 li").length;
+	var ulW = len * liW;
+	$(".YTer2 .video2").css("width", ulW);
+	$(".YTer2 li").css("width", liW);
+	index2--;
+	if(index2 == -1){
+		index2 = len - 1;
+	}
+	$('.detail .YTer2 .content-description').fadeOut(600);
+	showLi('.video2', index2, liW);
+	$('.detail .YTer2 .content-video').fadeIn(600);
+})
+$(".YTer2").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer2 li").length;
+	var ulW = len * liW;
+	$(".YTer2 .video2").css("width", ulW);
+	$(".YTer2 li").css("width", liW);
+	index2++;
+	if(index2 == len){
+		index2 = 0;
+	}
+	$('.detail .YTer2 .content-description').fadeOut(600);
+	showLi('.video2', index2, liW);
+	$('.detail .YTer2 .content-video').fadeIn(600);
+})
+$(".YTer3").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer3 li").length;
+	var ulW = len * liW;
+	$(".YTer3 .video3").css("width", ulW);
+	$(".YTer3 li").css("width", liW);
+	index3--;
+	if(index3 == -1){
+		index3 = len - 1;
+	}
+	$('.detail .YTer3 .content-description').fadeOut(600);
+	showLi('.video3', index3, liW);
+	$('.detail .YTer3 .content-video').fadeIn(600);
+})
+$(".YTer3").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer3 li").length;
+	var ulW = len * liW;
+	$(".YTer3 .video3").css("width", ulW);
+	$(".YTer3 li").css("width", liW);
+	index3++;
+	if(index3 == len){
+		index3 = 0;
+	}
+	$('.detail .YTer3 .content-description').fadeOut(600);
+	showLi('.video3', index3, liW);
+	$('.detail .YTer3 .content-video').fadeIn(600);
+})
+$(".YTer4").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer4 li").length;
+	var ulW = len * liW;
+	$(".YTer4 .video4").css("width", ulW);
+	$(".YTer4 li").css("width", liW);
+	index4--;
+	if(index4 == -1){
+		index4 = len - 1;
+	}
+	$('.detail .YTer4 .content-description').fadeOut(600);
+	showLi('.video4', index4, liW);
+	$('.detail .YTer4 .content-video').fadeIn(600);
+})
+$(".YTer4").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer4 li").length;
+	var ulW = len * liW;
+	$(".YTer4 .video4").css("width", ulW);
+	$(".YTer4 li").css("width", liW);
+	index4++;
+	if(index4 == len){
+		index4 = 0;
+	}
+	$('.detail .YTer4 .content-description').fadeOut(600);
+	showLi('.video4', index4, liW);
+	$('.detail .YTer4 .content-video').fadeIn(600);
+})
+$(".YTer5").on("click", ".btn-left", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer5 li").length;
+	var ulW = len * liW;
+	$(".YTer5 .video5").css("width", ulW);
+	$(".YTer5 li").css("width", liW);
+	index5--;
+	if(index5 == -1){
+		index5 = len - 1;
+	}
+	$('.detail .YTer5 .content-description').fadeOut(600);
+	showLi('.video5', index5, liW);
+	$('.detail .YTer5 .content-video').fadeIn(600);
+})
+$(".YTer5").on("click", ".btn-right", function(){
+	var liW = $(".detail").width();
+	var len = $(".detail .YTer5 li").length;
+	var ulW = len * liW;
+	$(".YTer5 .video5").css("width", ulW);
+	$(".YTer5 li").css("width", liW);
+	index5++;
+	if(index5 == len){
+		index5 = 0;
+	}
+	$('.detail .YTer5 .content-description').fadeOut(600);
+	showLi('.video5', index5, liW);
+	$('.detail .YTer5 .content-video').fadeIn(600);
+})
+
+function showLi(ul, index, liW){
+	$('.detail .btn-video').css('background-color', '#d3d3d3');
+	$('.detail .btn-description').css('background-color', '#f5f5f5');
+	var move = -index * liW
+	$(ul).stop().animate({"left":move},500)
+}
+	</script>
+</html>

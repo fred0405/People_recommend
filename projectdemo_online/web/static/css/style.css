@@ -1,0 +1,284 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+	color: #444;
+}
+
+p {
+	line-height: 2rem;
+}
+
+.sidenav-trigger {
+	color: #26a69a;
+}
+
+.parallax-container {
+	/*min-height: 380px;*/
+	line-height: 0;
+	height: auto;
+	/*color: rgba(255,255,255,.9);*/
+	color: white;
+	text-shadow: 0.025em 0.02em 0px #e8340e;
+}
+.parallax-container .section {
+	width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+	.parallax-container .section {
+		position: absolute;
+		top: 40%;
+	}
+	#index-banner .section {
+		top: 10%;
+	}
+}
+
+@media only screen and (max-width : 600px) {
+	#index-banner .section {
+		top: 0;
+	}
+}
+
+.icon-block {
+	padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+footer.page-footer {
+	margin: 0;
+}
+
+
+
+
+.golden{
+	color: #ffc23f;
+
+}
+h1.golden{
+	line-height: 1em;
+	/*margin: 0;*/
+	/*padding: 0;*/
+	text-shadow: 0.025em 0.02em 0px #e8340e;
+}
+
+.white-background{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 1847.24px;
+	background-color: white;
+	opacity: 0.5;
+	z-index: 2;
+	display: none;
+}
+.loader{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -32px;
+	margin-left: -32px;
+	z-index: 3;
+	opacity: 0.5;
+	display: none;
+}
+.preloader-wrapper.big.active{
+	z-index: 3;
+}
+
+
+.youtuber{
+	width: 100%;
+	margin: 30px 0;
+}
+.channal-information{
+	width: 100%;
+	height: 90px;
+	/*background-color: #f5f5f5;*/
+	/*margin: 30px 0;*/
+	padding: 10px 30px;
+}
+.channal-information .photo{
+	width: 20%;
+	text-align: center;
+	float: left;
+}
+.channal-information .photo img{
+	width: 70px;
+	border-radius: 35px;
+}
+.channal-information .channal{
+	width: 80%;
+	height: 100%;
+	background-color: #f5f5f5;
+	float: left;
+}
+.channal .name{
+	width: 100%;
+	height: 60%;
+	padding: 2% 0;
+	font-size: large;
+	text-align: center;
+	cursor: default;
+}
+.channal .subscriber{
+	width: 100%;
+	height: 40%;
+	padding: 0.5% 0;
+	font-size: x-small;
+	text-align: center;
+}
+.youtuber .video-preview{
+	width: 100%;
+	height: 200px;
+	display: none;
+}
+.video-preview .control-block{
+	width: 19%;
+	height: 100%;
+	float: left;
+}
+.video-preview .preview{
+	width: 27%;
+	height: 100%;
+	padding: 0.5%;
+	background-color: #f5f5f5;
+	float: left;
+}
+
+
+.detail{
+	position: fixed;
+	width: 80%;
+	left: 10%;
+	height: 95vh;
+	margin: 2.5vh 0;
+	z-index: 3;
+	background-color: white;
+	display: none;
+}
+.detail .video-content{
+	height: 100%;
+}
+.video-content .content-video{
+	width: 100%;
+	height: 70%;
+}
+.video-content .content-description{
+	width: 100%;
+	height: 30%;
+	padding: 0 3%;
+	text-align: left;
+	white-space: normal;
+	overflow-y: auto;
+}
+.video-content .content-description::-webkit-scrollbar{
+	display: none;
+}
+
+
+
+
+
+
+li{
+	list-style: none;
+}
+
+
+.YTer{
+	width: 100%;
+	height: 100%;
+	padding: 2.5% 0;
+	position: relative;
+}
+.YTer .info{
+	width: 20%;
+	height: 95%;
+	margin: 2.5%;
+	float: left;
+}
+.info .photo{
+	width: 100%;
+	height: 30%;
+	padding: 10% 0;
+	text-align: center;
+}
+.info .photo img{
+	border-radius: 100%;
+}
+.info .description{
+	width: 100%;
+	height: 70%;
+	background-color: #f5f5f5;
+	padding: 20px;
+	overflow-y: auto;
+}
+.info .description::-webkit-scrollbar{
+	display: none;
+}
+.YTer .videos{
+	width: 70%;
+	height: 95%;
+	margin: 2.5%;
+	position: relative;
+	overflow: hidden;
+	float: left;
+}
+.videos .video{
+	/*width: 100%;*/
+	height: 100%;
+	margin: 0;
+	position: absolute;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.video li{
+	/*width: 100%;*/
+	height: 100%;
+	text-align: center;
+	background-color: #f5f5f5;
+	float: left;
+}
+.btn{
+	width: 50px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	font-size: 30px;
+	color: transparent;
+	background-color: transparent;
+	cursor: pointer;
+}
+.btn:hover{
+	color: white;
+}
+.btn-left{
+	position: absolute;
+	left: 25%;
+	top: 50%;
+	margin-top: -30px;
+}
+.btn-right{
+	position: absolute;
+	right: 0%;
+	top: 50%;
+	margin-top: -30px;
+}
+
+
+
+
+
+

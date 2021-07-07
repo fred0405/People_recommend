@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Youtuber Recommendation</title>
+	{% include './layout/include_header.ejs' %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href={% static "css/materialize.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href={% static "css/style2.css" %} type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href={% static "css/style1.css" %} type='text/css' rel='stylesheet' />
+  </head>
+  <body>
+  <div class="loader-background"></div>
+  <div class="loader">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="header-search-bar container-fluid">
+      <div class="container header-search-content">
+        <h5 class="demo-title"><img class="demo-logo" src={% static "images/youtubeicon.png" %}/>Youtuber Recommendation</h5>
+        <table class="keyword-input-wrapper">
+          <tr>
+              <td class="firstInput"><p class="keywordType"></p><input id="keyword" type="text" placeholder="keyword..."/></td>
+              <td class="operatorContainer"><button class="operatorBtn calcOperator kk-hover-shadow">=</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="no-result">
+      <div class="no-result-block">
+        <p>Sorry,</p>
+        <p>no results were found for your search.</p>
+      </div>
+    </div>
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-12 offset-md-0 change-size" style="z-index: 1000;">
+        
+	  <div class="list-container">
+
+          </div>
+
+	  <div class="debug"></div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+		// mouse touch
+		$('.calcOperator').hover(function(){
+			$(this).stop().animate({'opacity': 0.5});
+		}, function(){
+			$(this).stop().animate({'opacity': 1});
+		});
+
+		$(document).ready(function(){
+			$('.calcOperator').click(function(){
+				$('.row.center').animate({width: '50%'});
+				$('.list-container').slideUp('slow');
+				$('.list-container').empty();
+				$('.loader').fadeIn(500);
+				$('.loader-background').fadeIn(500);
+				
+				$.post('/search/', {keyword: $('#keyword').val()}, (rtn) => {
+					var count = 0;
+					$.each(JSON.parse(rtn.result), function(idx, val){
+						count = count + 1;
+						$('.list-container').append('<div class="youtuber-list"><p class="youtuber youtuber' + count + '">' + idx + '</p><div class="videos"><table class="video-list youtuber' + count + '"><thead></thead><tbody><tr></tr></tbody></table></div></div>');
+						$('p.youtuber.youtuber' + count).append('<br>' + Object.values(val.info)[0]);
+						$.each(Object.values(val.movie).map(item => item.movie_id), function(index, movie){
+							$('.video-list.youtuber' + count + ' tr').append('<td class="youtuber' + count + ' video"><iframe width="560" height="315" src="https://www.youtube.com/embed/' + movie + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>');
+							return (index < 9);
+						});
+						return (count < 5);
+					});
+				});
+				
+				$('.list-container').slideDown('slow');
+				$('.loader').fadeOut(500);
+				$('.loader-background').fadeOut(500);
+			});
+		});
+
+		$(document).ready(function(){
+			$('.list-container').on('click', '.youtuber-list .youtuber.youtuber1', function(){
+				$('.youtuber1.video').slideToggle('slow');
+				$('.youtuber2.video').slideUp('slow');
+				$('.youtuber3.video').slideUp('slow');
+				$('.youtuber4.video').slideUp('slow');
+				$('.youtuber5.video').slideUp('slow');
+			});
+			$('.list-container').on('click', '.youtuber-list .youtuber.youtuber2', function(){
+				$('.youtuber1.video').slideUp('slow');
+				$('.youtuber2.video').slideToggle('slow');
+				$('.youtuber3.video').slideUp('slow');
+				$('.youtuber4.video').slideUp('slow');
+				$('.youtuber5.video').slideUp('slow');
+			});
+			$('.list-container').on('click', '.youtuber-list .youtuber.youtuber3', function(){
+				$('.youtuber1.video').slideUp('slow');
+				$('.youtuber2.video').slideUp('slow');
+				$('.youtuber3.video').slideToggle('slow');
+				$('.youtuber4.video').slideUp('slow');
+				$('.youtuber5.video').slideUp('slow');
+			});
+			$('.list-container').on('click', '.youtuber-list .youtuber.youtuber4', function(){
+				$('.youtuber1.video').slideUp('slow');
+				$('.youtuber2.video').slideUp('slow');
+				$('.youtuber3.video').slideUp('slow');
+				$('.youtuber4.video').slideToggle('slow');
+				$('.youtuber5.video').slideUp('slow');
+			});
+			$('.list-container').on('click', '.youtuber-list .youtuber.youtuber5', function(){
+				$('.youtuber1.video').slideUp('slow');
+				$('.youtuber2.video').slideUp('slow');
+				$('.youtuber3.video').slideUp('slow');
+				$('.youtuber4.video').slideUp('slow');
+				$('.youtuber5.video').slideToggle('slow');
+			});
+		});
+
+  </script>
+  
+</html>
